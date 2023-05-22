@@ -24,33 +24,40 @@ map:
     br x30
 
 /*
-	@brief 
-	@param x3, x4: coordinates of the pixel to map
-*/
+	@brief: 
+	draw a square in the frame buffer with the color in x10
+	address base (x3, x4) in lower left corner.
+			
+	@param: x3, x4: coordinates of the pixel to map
+	@param: x5: height and width of the square, does not modify it 
+	@param: x10: color of the square
+	@save_stack: x3, x4, x6, x7, x30 
+*/	
+
 draw_square:
 	sub sp, sp, #40
-	str x6, [sp, #32]
-	str x5, [sp, #24]
+	str x7, [sp, #32]
+	str x6, [sp, #24]
 	str x4, [sp, #16]
 	str x3, [sp, #8]
 	str x30, [sp]
 	
 	bl map
-	mov x5, #50		// heigh
+	mov x6, x5		  	// height
 draw_square_loop1:
-	mov x6, #50     // width
+	mov x7, x5     		// width
 draw_square_loop2:
 	stur w10, [x0]
 	add x0, x0, #4
-	sub x6, x6, #1 
-	cbnz x6, draw_square_loop2
+	sub x7, x7, #1 
+	cbnz x7, draw_square_loop2
 	sub x4, x4, #1
 	bl map 
-	sub x5, x5, #1 
-	cbnz x5, draw_square_loop1
+	sub x6, x6, #1 
+	cbnz x6, draw_square_loop1
 	
-	ldr x6, [sp, #32]
-	ldr x5, [sp, #24]
+	ldr x7, [sp, #32]
+	ldr x6, [sp, #24]
 	ldr x4, [sp, #16]
 	ldr x3, [sp, #8]
 	ldr x30, [sp]
