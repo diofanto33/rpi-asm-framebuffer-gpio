@@ -1,12 +1,17 @@
-	.equ SCREEN_WIDTH,   640
-	.equ SCREEN_HEIGH,   480
-	.equ BITS_PER_PIXEL, 32
 
-	.equ GPIO_BASE,    0x3f200000
-	.equ GPIO_GPFSEL0, 0x00
-	.equ GPIO_GPLEV0,  0x34
+.include "utils.s" 
 
-	.globl main
+.equ SCREEN_WIDTH,   640
+.equ SCREEN_HEIGH,   480
+.equ BITS_PER_PIXEL, 32
+
+.equ GPIO_BASE,    0x3f200000
+.equ GPIO_GPFSEL0, 0x00
+.equ GPIO_GPLEV0,  0x34
+
+blue_color: .word 0x0000FF
+
+.globl main
 
 main:
 	// x0 contiene la direccion base del framebuffer
@@ -52,6 +57,12 @@ loop0:
 
 	//---------------------------------------------------------------
 	// Infinite Loop
+	
+	mov x3, #277
+	mov x4, #229
+	mov x5, #100 
+	mov w10, blue_color
+	bl draw_square
 
 InfLoop:
 	b InfLoop
