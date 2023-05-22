@@ -5,9 +5,9 @@
 .globl main
 
 main:
-	mov x20, x0
+    mov x20, x0
 
-	bl squared_bg
+    bl squared_bg
 		
 InfLoop:
-	b InfLoop
+    b InfLoop
