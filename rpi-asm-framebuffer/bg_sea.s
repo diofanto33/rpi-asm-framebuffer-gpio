@@ -762,7 +762,7 @@ draw_sea:
 	str x30, [sp]
 	
 	mov x3, x5 
-	mov x4, #32
+	mov x4, x6
 	mov x1, #14
 sea_loop1:
 	mov x2, #14
@@ -772,7 +772,7 @@ sea_loop2:
 	sub x2, x2, #1 
 	cbnz x2, sea_loop2
 	mov x3, x5 
-	add x4, x4, #32
+	add x4, x4, x6
 	sub x1, x1, #1 
 	cbnz x1, sea_loop1
 

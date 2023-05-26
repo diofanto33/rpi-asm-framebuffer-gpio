@@ -43,6 +43,7 @@ main:
 
 	bl draw_bg
 	mov x5, #99
+	mov x6, #32
 	bl draw_sea
 	bl actualizarFrameBuffer
 	bl doDelay
@@ -50,12 +51,14 @@ main:
 sea_loop:
 	bl draw_bg
 	mov x5, #102
+	mov x6, #32
 	bl draw_sea
 	bl actualizarFrameBuffer
 	bl doDelay
 
 	bl draw_bg
 	mov x5, #99
+	mov x6, #32
 	bl draw_sea 
 	bl actualizarFrameBuffer
 	bl doDelay
