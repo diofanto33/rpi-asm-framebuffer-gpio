@@ -16,8 +16,9 @@ map:
     str x30, [sp]
 
     mov x21, #4               
-    mov x0, x20               
-    mov x15, 2560              
+    ldr x0, =bufferSecundario
+//	mov x0, x20
+	mov x15, 2560              
     madd x0, x15, x4, x0 	    
     madd x0, x21, x3, x0     
 
@@ -82,9 +83,9 @@ squared_bg:
     str x1, [sp, #8] 
     str x30, [sp]
 
-    mov x0, x20;
-    ldr x10, bluecolorbg1
-    ldr x11, bluecolorbg2
+    mov x0, x20
+    ldr w10, green_color1
+    ldr w11, green_color1
 				// x0 direciona un color
     add x8, x0, #4            	// x8 direcciona el otro color
     mov x2, SCREEN_HEIGH     	// y size
@@ -111,5 +112,20 @@ square_bg_loop0:
     ldr x30, [sp]
     add sp, sp, #48
     br x30
+
+/* 
+  El proc doDelay hace un gran loop para crear delay, 
+  el tiempo de delay depende de la constante delay.
+  
+  - Input: delay <- La constante delay se define en datos.s
+  - Usa sin salvar el registro x9
+*/
+
+doDelay:
+    ldr x9, delay
+loop_doDelay:
+    subs x9, x9, 1
+    b.ne loop_doDelay    
+    br x30 
 
 .endif

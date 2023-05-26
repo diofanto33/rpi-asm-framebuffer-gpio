@@ -35,7 +35,8 @@ draw_chunk_bg:
 	add x3, x3, #18
 	bl map
 	str w12, [x0]
-	add x0, x0, #4
+	add x3, x3, #1
+	bl map
 	str w12, [x0]
 
 	sub x3, x3, #18
@@ -52,7 +53,8 @@ draw_chunk_bg:
 	add x3, x3, #9
 	bl map 
 	str w12, [x0]
-	add x0, x0, #4
+	add x3, x3, #1 
+	bl map 
 	str w12, [x0]
 
 	add x3, x3, #7
@@ -725,14 +727,9 @@ draw_chunk_bg:
 */
 
 draw_bg:
-	sub sp, sp, #24
-	str x2, [sp, #16]
-	str x1, [sp, #8]
-	str x30, [sp]
-	
 	ldr w12, bluecolorbg2
-
-	mov x0, x20
+	ldr x0, =bufferSecundario
+//	mov x0, x20
 	mov x2, SCREEN_HEIGH    // Y Size
 draw_bg_loop1:
 	mov x1, SCREEN_WIDTH    // X Size
@@ -742,12 +739,7 @@ draw_bg_loop0:
 	sub x1, x1, #1    			// Decrementar contador X
 	cbnz x1, draw_bg_loop0  // Si no terminó la fila, salto
 	sub x2, x2, #1    			// Decrementar contador Y
-	cbnz x2, draw_bg_loop1  // Si no es la última fila, salto
-	
-	ldr x2, [sp, #16]
-	ldr x1, [sp, #8]
-	ldr x30, [sp]
-	add sp, sp, #24
+	cbnz x2, draw_bg_loop1  // Si no es la última fila, salto	
 	br x30 
 
 /*
@@ -766,34 +758,26 @@ draw_bg_loop0:
 */
 
 draw_sea:
-	sub sp, sp, #40
-	str x1, [sp, #32]
-	str x2, [sp, #24]
-	str x3, [sp, #16]
-	str x4, [sp, #8]
+	sub sp, sp, #8
 	str x30, [sp]
 	
-	mov x3, x5 
+	mov x3, #99 
 	mov x4, #32
-	mov x1, #16
+	mov x1, #14
 sea_loop1:
-	mov x2, #21 
+	mov x2, #14
 sea_loop2:
 	bl draw_chunk_bg
 	add x3, x3, #31
 	sub x2, x2, #1 
 	cbnz x2, sea_loop2
-	mov x3, x5 
+	mov x3, #99 
 	add x4, x4, #32
 	sub x1, x1, #1 
 	cbnz x1, sea_loop1
 
-	ldr x1, [sp, #32]
-	ldr x2, [sp, #24]
-	ldr x3, [sp, #16]
-	ldr x4, [sp, #8]
 	ldr x30, [sp]
-	add sp, sp, #40
+	add sp, sp, #8
 	br x30
 
 .endif
