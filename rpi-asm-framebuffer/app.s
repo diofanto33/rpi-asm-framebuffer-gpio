@@ -38,12 +38,29 @@ end_loop_actualizarFrameBuffer:
 main:
 	mov x20, x0
     adr x1, dir_frameBuffer
-    str x0, [x1]    /* store the memory address of the frame-buffer in dir_frameBuffer */
-	
+    /* store the memory address of the frame-buffer in dir_frameBuffer */
+	str x0, [x1]
+
 	bl draw_bg
+	mov x5, #99
 	bl draw_sea
-		
 	bl actualizarFrameBuffer
+	bl doDelay
+
+sea_loop:
+	bl draw_bg
+	mov x5, #102
+	bl draw_sea
+	bl actualizarFrameBuffer
+	bl doDelay
+
+	bl draw_bg
+	mov x5, #99
+	bl draw_sea 
+	bl actualizarFrameBuffer
+	bl doDelay
+
+	b sea_loop
 
 
 InfLoop:
