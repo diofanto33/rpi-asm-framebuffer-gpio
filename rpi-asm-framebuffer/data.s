@@ -16,13 +16,13 @@ green_color1: .word 0x00B70C
 
 /* airplane colors */
 
-blue1_color0: .word 0x7890A0
-blue1_color1: .word 0x88A8C8
-blue1_color2: .word 0xC0E0F8
-blue1_color3: .word 0x1898F8
-blue1_color4: .word 0x1068F8
-blue1_color5: .word 0x3050B0
-blue1_color6: .word 0x40C0F8
+blue0_color: .word 0x7890A0
+blue1_color: .word 0x88A8C8
+blue2_color: .word 0xC0E0F8
+blue3_color: .word 0x1898F8
+blue4_color: .word 0x1069F8
+blue5_color: .word 0x3050B0
+blue6_color: .word 0x40C0F8
 
 gray1_color: .word 0x707078
 gray2_color: .word 0x505050
