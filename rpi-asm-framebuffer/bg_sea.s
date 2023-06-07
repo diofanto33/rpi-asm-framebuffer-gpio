@@ -6,13 +6,13 @@
 
 /*
     @brief:
-    draw a chunk of ~ 33x33 pixels in the frame buffer with the color in w12 
+    draw a chunk of ~ 33x33 pixels in the frame buffer with the color in w24 
     of a aleatory pattern pixel by pixel.
 
     @param: 
     x3: x coordinate of the chunk
     x4: y coordinate of the chunk
-    w12: color of the chunk 
+    w24: color of the chunk 
     
     @return: none 
 
@@ -30,684 +30,684 @@ draw_chunk_bg:
 	str x3, [sp, #8]
 	str x30, [sp]
 
-	ldr w12, bluecolorbg1
+	ldr w24, bluecolorbg1
 	
 	add x3, x3, #18
 	bl map
-	str w12, [x0]
+	str w24, [x0]
 	add x3, x3, #1
 	bl map
-	str w12, [x0]
+	str w24, [x0]
 
 	sub x3, x3, #18
 	sub x4, x4, #1 
 	
 	add x3, x3, #2 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 
 	add x3, x3, #2 
 	bl map
-	str w12, [x0]
+	str w24, [x0]
 	
 	add x3, x3, #9
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 	add x3, x3, #1 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 
 	add x3, x3, #7
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 
 	sub x3, x3, #19
 	sub x4, x4, #1 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 
 	add x3, x3, #1 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 
 	add x3, x3, #6
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 
 	add x3, x3, #9 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 
 	add x3, x3, #1 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 
 	add x3, x3, #5
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 
 	add x3, x3, #1 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 
 	add x3, x3, #1 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 
 	add x3, x3, #4 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 
 	sub x3, x3, #25 
 	sub x4, x4, #1 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 
 	add x3, x3, #1 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 
 	add x3, x3, #8
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 
 	sub x3, x3, #8
 	sub x4, x4, #1 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 	
 	add x3, x3, #1 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 	
 	add x3, x3, #4
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 
 	add x3, x3, #19
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 
 	sub x3, x3, #24
 	sub x4, x4, #1 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 
 	add x3, x3, #1 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 
 	add x3, x3, #10 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 
 	add x3, x3, #4
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 
 	add x3, x3, #1 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 
 	add x3, x3, #7 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 
 	add x3, x3, #1 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 
 	sub x4, x4, #1 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 
 	sub x3, x3, #2 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 
 	sub x3, x3, #7
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 
 	sub x3, x3, #1 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 
 	sub x3, x3, #6
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 
 	sub x3, x3, #1 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 
 	sub x3, x3, #4 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 
 	sub x3, x3, #1 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 
 	sub x3, x3, #1 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 
 	sub x3, x3, #5
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 
 	sub x4, x4, #1 
 	add x3, x3, #6
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 	
 	add x3, x3, #1 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 	
 	add x3, x3, #10 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 	
 	add x3, x3, #1 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 	
 	add x3, x3, #1 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 	
 	sub x3, x3, #2 
 	sub x4, x4, #1 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 	
 	add x3, x3, #1 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 	
 	add x3, x3, #4 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 	
 	add x3, x3, #1 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 
 	add x3, x3, #4 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 	
 	sub x3, x3, #4 
 	sub x4, x4, #1 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 	
 	sub x3, x3, #24 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 	
 	sub x4, x4, #1 
 	add x3, x3, #1 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 	
 	add x3, x3, #1 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 
 	add x3, x3, #8 
 	bl map
-	str w12, [x0]
+	str w24, [x0]
 	
 	add x3, x3, #2 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 	
 	add x3, x3, #1 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 	
 	sub x3, x3, #7
 	sub x4, x4, #1 
 	bl map
-	str w12, [x0]
+	str w24, [x0]
 
 	sub x3, x3, #5
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 	
 	sub x3, x3, #1 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 	
 	add x3, x3, #14
 	sub x4, x4, #1 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 	
 	add x3, x3, #5
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 	
 	add x3, x3, #7
 	sub x4, x4, #1 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 	
 	sub x3, x3, #1 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 	
 	sub x3, x3, #6
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 	
 	sub x3, x3, #1
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 	
 	sub x3, x3, #2 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 
 	sub x3, x3, #13 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 	
 	add x3, x3, #4
 	sub x4, x4, #1 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 	
 	add x3, x3, #1 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 
 	add x3, x3, #1 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 
 	add x3, x3, #10 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 
 	add x3, x3, #2 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 	
 	add x3, x3, #5 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 	
 	add x3, x3, #1 
 	sub x4, x4, #1 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 	
 	sub x3, x3, #1 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 	
 	sub x3, x3, #1 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 	
 	sub x3, x3, #13 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 	
 	sub x3, x3, #1 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 
 	sub x3, x3, #10 
 	sub x4, x4, #1 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 	
 	add x3, x3, #1 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 
 	add x3, x3, #7
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 
 	add x3, x3, #2 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 	
 	add x3, x3, #1 
 	bl map
-	str w12, [x0]
+	str w24, [x0]
 	
 	add x3, x3, #14 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 	
 	add x3, x3, #1 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 	
 	sub x4, x4, #1 
 	sub x3, x3, #5 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 
 	sub x3, x3, #10 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 
 	sub x3, x3, #2 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 
 	sub x3, x3, #8 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 
 	add x3, x3, #1 
 	sub x4, x4, #1 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 
 	add x3, x3, #1 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 
 	add x3, x3, #6 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 
 	add x3, x3, #7 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 
 	add x3, x3, #1 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 	
 	add x3, x3, #10 
 	sub x4, x4, #1 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 
 	sub x3, x3, #3 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 
 	sub x3, x3, #8 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 
 	sub x3, x3, #1 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 
 	sub x3, x3, #12
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 
 	sub x3, x3, #1 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 
 	sub x4, x4, #1 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 
 	add x3, x3, #1 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 
 	add x3, x3, #10 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 
 	add x3, x3, #1 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 
 	add x3,x3, #1 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 
 	add x3, x3, #1 
 	bl map
-	str w12, [x0]
+	str w24, [x0]
 
 	add x3, x3, #3 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 
 	add x3, x3, #5 
 	sub x4, x4, #1 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 	
 	sub x3, x3, #19 
 	sub x4, x4, #1 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 
 	sub x3, x3, #6 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 
 	sub x3, x3, #1 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 
 	sub x4, x4, #1 
 	add x3, x3, #1 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 
 	add x3, x3, #1
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 
 	add x3, x3, #5 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 
 	add x3, x3, #13 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 
 	add x3, x3, #8 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 
 	add x3, x3, #1 
 	sub x4, x4, #1 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 
 	sub x3, x3, #1 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 
 	sub x3, x3, #8 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 
 	sub x3, x3, #9 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 
 	sub x3, x3, #1 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 
 	sub x3, x3, #4 
 	sub x4, x4, #1 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 
 	add x3, x3, #5 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 
 	add x3, x3, #2 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 
 	add x3, x3, #5 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 
 	add x3, x3, #5 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 
 	sub x3, x3, #10 
 	sub x4, x4, #1 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 
 	sub x3, x3, #2 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 
 	sub x3, x3, #2
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 
 	sub x3, x3, #3 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 
 	sub x3, x3, #5 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 
 	sub x3, x3, #1 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 
 	sub x4, x4, #1 
 	add x3, x3, #1 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 
 	add x3, x3, #1
 	bl map
-	str w12, [x0]
+	str w24, [x0]
 	
 	add x3, x3, #21 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 
 	add x3, x3, #1 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 
 	add x3, x3, #3 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 
 	add x3, x3, #1 
 	sub x4, x4, #1 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 
 	sub x3, x3, #4 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 
 	sub x3, x3, #1 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 
 	sub x3, x3, #5 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 
 	sub x3, x3, #1 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 
 	sub x3, x3, #15 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 
 	sub x3, x3, #1 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 
 	sub x4, x4, #1 
 	add x3, x3, #1 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 
 	add x3, x3, #1 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 
 	add x3, x3, #1 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 
 	add x3, x3, #14 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 
 	add x3, x3, #3 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 	
 	add x3, x3, #1 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 
 	add x3, x3, #1 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 
 	add x3, x3, #1 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 
 	add x3, x3, #5 
 	sub x4, x4, #1 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 
 	sub x3, x3, #18
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 
 	sub x3, x3, #1 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 
 	sub x3, x3, #6
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 
 	sub x3, x3, #1 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 
 	add x3, x3, #6 
 	sub x4, x4, #1 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 
 	add x3, x3, #1 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 
 	add x3, x3, #1 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 	
 	add x3, x3, #1 
 	bl map 
-	str w12, [x0]
+	str w24, [x0]
 
 	ldr x4, [sp, #16]
 	ldr x3, [sp, #8]
@@ -724,17 +724,19 @@ draw_chunk_bg:
 	@return: none
 
 	@saveStack: x1, x2, x30
+
+    @color: w24
 */
 
 draw_bg:
-	ldr w12, bluecolorbg2
+	ldr w24, bluecolorbg2
 	ldr x0, =bufferSecundario
 //	mov x0, x20
 	mov x2, SCREEN_HEIGH    // Y Size
 draw_bg_loop1:
 	mov x1, SCREEN_WIDTH    // X Size
 draw_bg_loop0:
-	stur w12, [x0]  			// Colorear el pixel N
+	stur w24, [x0]  			// Colorear el pixel N
 	add x0, x0, #4    			// Siguiente pixel
 	sub x1, x1, #1    			// Decrementar contador X
 	cbnz x1, draw_bg_loop0  // Si no terminó la fila, salto
@@ -743,11 +745,7 @@ draw_bg_loop0:
 	br x30 
 
 /*
-<<<<<<< HEAD
 	@brief: draw the pattern of the sea in the framebuffer
-=======
-    @brief: draw the pattern of the sea in the framebuffer
->>>>>>> expDie
 	
     @return: none
 
@@ -762,7 +760,9 @@ draw_bg_loop0:
 */
 
 draw_sea:
-	sub sp, sp, #8
+	sub sp, sp, #24
+    str x4, [sp, #16]
+    str x3, [sp, #8]
 	str x30, [sp]
 	
 	mov x3, #8
@@ -781,8 +781,10 @@ sea_loop2:
 	sub x1, x1, #1 
 	cbnz x1, sea_loop1
 
+    ldr x4, [sp, #16]
+    ldr x3, [sp, #8]
 	ldr x30, [sp]
-	add sp, sp, #8
+	add sp, sp, #24
 	br x30
 
 .endif

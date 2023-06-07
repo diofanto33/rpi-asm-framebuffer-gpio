@@ -5,6 +5,14 @@
 
 bufferSecundario: .skip BYTES_FRAMEBUFFER
 
+
+
+.equ key_W, 0x2
+.equ key_A, 0x4
+.equ key_S, 0x8
+.equ key_D, 0x10
+.equ key_SPACE, 0x20
+
  // A mayor número mas lento va la animación
 
 delay: .dword 0xFFFFF 

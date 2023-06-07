@@ -58,7 +58,7 @@ InfLoop:
     b InfLoop
 
 gpio_func: 
-    sub sp, sp, #16										
+    sub sp, sp, #16 										
 	stur x9,  [sp, #8]
     stur x30, [sp]
 
@@ -104,27 +104,8 @@ gpio_func:
 
 	cmp w14, key_D			
 	b.eq mov_rgt
-    
-    bl end_gpio_func
-
-mov_up:
-    sub x4, x4, #5
-    ret
-
-mov_lft:
-    sub x3, x3, #5
-    ret
-
-mov_down:
-    add x4, x4, #5
-    ret
-
-mov_rgt:
-    add x3, x3, #5
-    ret
-
-end_gpio_func:
-    ldr x30, [sp]
+		
+	ldr x30, [sp]
     add sp, sp, #8
     br x30
 
@@ -147,3 +128,19 @@ f1:
     ldr x30, [sp] 
     add sp, sp, #24
     br x30
+
+mov_up:
+    sub x4, x4, #5
+    ret  
+
+mov_lft:
+    sub x3, x3, #5
+    ret 
+
+mov_down:
+    add x4, x4, #5
+    ret 
+
+mov_rgt:
+    add x3, x3, #5
+    ret

@@ -18,8 +18,8 @@ map:
     mov x21, #4               
     ldr x0, =bufferSecundario
 //	mov x0, x20
-	mov x15, 2560              
-    madd x0, x15, x4, x0 	    
+	mov x26, 2560              
+    madd x0, x26, x4, x0 	    
     madd x0, x21, x3, x0     
 
     ldr x30, [sp]
@@ -33,7 +33,7 @@ map:
 			
     @param: x3, x4: coordinates of the pixel to map
     @param: x5: height and width of the square, does not modify it 
-    @param: x12: color of the square
+    @param: w24: color of the square
     @save_stack: x3, x4, x6, x7, x30 
 */	
 
@@ -50,7 +50,7 @@ draw_square:
 draw_square_loop1:
     mov x7, x5     		// width
 draw_square_loop2:
-    stur w12, [x0]
+    stur w24, [x0]
     add x0, x0, #4
     sub x7, x7, #1 
     cbnz x7, draw_square_loop2
@@ -67,52 +67,6 @@ draw_square_loop2:
     add sp, sp, #40
     br x30
 
-/*
-    @brief:
-	draw a squared background in the frame buffer with the color in x10 and x11
-    @param: None
-    @save_stack: x1, x2, x8, x10, x11, x30
-*/
-
-squared_bg:
-    sub sp,sp,#48
-    str x11, [sp, #40]
-    str x10, [sp, #32]
-    str x8, [sp, #24]
-    str x2, [sp, #16]
-    str x1, [sp, #8] 
-    str x30, [sp]
-
-    mov x0, x20
-    ldr w10, green_color1
-    ldr w11, green_color1
-				// x0 direciona un color
-    add x8, x0, #4            	// x8 direcciona el otro color
-    mov x2, SCREEN_HEIGH     	// y size
-square_bg_loop1:
-    mov x1, SCREEN_WIDTH     	// x size
-square_bg_loop0:
-    stur w10, [x0]           	// set color of pixel n
-    stur w11, [x8]           	// set color of pixel n
-    add x8, x8, #8            	// next + 1 pixel
-    add x0, x0, #8            	// next + 1 pixel
-    sub x1, x1, #2	         // decrement x counter
-    cbnz x1, square_bg_loop0	// if not end row jump
-    eor x0, x0, x8           	// swap(x0,x8)
-    eor x8, x0, x8
-    eor x0, x0, x8
-    sub x2, x2, #1            	// decrement y counter
-    cbnz x2, square_bg_loop1    // if not last row, jump
-
-    ldr x11, [sp, #40]
-    ldr x10, [sp, #32]
-    ldr x8, [sp, #24]
-    ldr x2, [sp, #16]
-    ldr x1, [sp, #8]
-    ldr x30, [sp]
-    add sp, sp, #48
-    br x30
-
 /* 
   El proc doDelay hace un gran loop para crear delay, 
   el tiempo de delay depende de la constante delay.
@@ -122,9 +76,9 @@ square_bg_loop0:
 */
 
 doDelay:
-    ldr x9, delay
+    ldr x19, delay
 loop_doDelay:
-    subs x9, x9, 1
+    subs x19, x19, 1
     b.ne loop_doDelay    
     br x30 
 
