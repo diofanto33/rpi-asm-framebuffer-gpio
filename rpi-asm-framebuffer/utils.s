@@ -112,4 +112,19 @@ square_bg_loop0:
     add sp, sp, #48
     br x30
 
+/* 
+  El proc doDelay hace un gran loop para crear delay, 
+  el tiempo de delay depende de la constante delay.
+  
+  - Input: delay <- La constante delay se define en datos.s
+  - Usa sin salvar el registro x9
+*/
+
+doDelay:
+    ldr x9, delay
+loop_doDelay:
+    subs x9, x9, 1
+    b.ne loop_doDelay    
+    br x30 
+
 .endif
