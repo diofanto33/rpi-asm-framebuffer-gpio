@@ -5,7 +5,6 @@
 
 .globl main
 
-
 /* actualizarFrameBuffer:
     Parámetros:
         x0 = Dirección del buffer secundario
@@ -41,15 +40,19 @@ main:
     /* store the memory address of the frame-buffer in dir_frameBuffer */
 	str x0, [x1]
 
-    mov x3, #100 
+    mov x3, #100
     mov x4, #100
-    bl draw_bg
+    bl init_loop
 
 init_loop:
-    bl f1 
-    bl actualizarFrameBuffer
+    bl draw_bg
+    bl draw_sea
+  
+    bl airplane 
+    bl gpio_func
+    
+    bl actualizarFrameBuffer 
     bl doDelay
-    bl gpio_func  
 
     b init_loop
 
@@ -58,9 +61,8 @@ InfLoop:
     b InfLoop
 
 gpio_func: 
-    sub sp, sp, #16										
-	stur x9,  [sp, #8]
-    stur x30, [sp]
+    sub sp, sp, #8										
+    stur x9, [sp]
 
 	// Seteamos el GPIO para poder realizar la lectura de los inputs
 	mov x9, GPIO_BASE
@@ -92,8 +94,8 @@ gpio_func:
 	// si w11 es 0 entonces el GPIO 1 estaba liberado
 	// de lo contrario será distinto de 0, (en este caso particular 2)
 	// significando que el GPIO 1 fue presionado
-
-	cmp w11, key_W			
+    
+   	cmp w11, key_W			
 	b.eq mov_up
 
 	cmp w12, key_A			
@@ -105,7 +107,7 @@ gpio_func:
 	cmp w14, key_D			
 	b.eq mov_rgt
     
-    bl end_gpio_func
+    ret 
 
 mov_up:
     sub x4, x4, #5
@@ -122,28 +124,3 @@ mov_down:
 mov_rgt:
     add x3, x3, #5
     ret
-
-end_gpio_func:
-    ldr x30, [sp]
-    add sp, sp, #8
-    br x30
-
-f1:
-    sub sp, sp, #24
-    stur x4,  [sp, #16]
-    stur x3,  [sp, #8]
-    stur x30, [sp]
-
-	/* draw the background */ 
-    bl draw_bg
-    bl draw_sea
-    
-    /* draw the airplane */ 
-    bl airplane 
-//    bl propeller_frame_1
-    
-    ldr x4, [sp, #16]
-    ldr x3, [sp, #8]
-    ldr x30, [sp] 
-    add sp, sp, #24
-    br x30
