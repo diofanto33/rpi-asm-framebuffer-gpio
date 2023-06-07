@@ -1295,6 +1295,7 @@ propeller_frame_1:
     sub x3, x3, #41
     sub x4, x4, #43 
     ldr w10, gray5_color 
+    mov x5, #4 
     bl draw_square 
 
     add x3, x3, #4 
@@ -1364,16 +1365,14 @@ propeller_frame_2:
     str x10, [sp, #8]
     str x30, [sp, #0]
     
-    /* draw propeller */
-    
     sub x3, x3, #29
     sub x4, x4, #43 
     ldr w10, gray5_color 
+    mov x5, #4
     bl draw_square 
 
     add x3, x3, #56
     bl draw_square
-
 
     ldr x3, [sp, #24]
     ldr x4, [sp, #16]
@@ -1381,9 +1380,5 @@ propeller_frame_2:
     ldr x30, [sp, #0]
     add sp, sp, #32
     br x30
-
-
-
-
 
 .endif
