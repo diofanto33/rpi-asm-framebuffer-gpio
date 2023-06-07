@@ -1,5 +1,3 @@
-# ~/src/ignore
-
 plane:
     gray1 = #707078
     gray2 = #505050
@@ -14,5 +12,3 @@ plane:
     blue4 = #1068F8
     blue5 = #3050B0
     blue6 = #40C0F8
-   
-    
