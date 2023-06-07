@@ -5,23 +5,23 @@
 .include "utils.s"
 
 /*
-	@brief:
-		draw a chunk of ~ 33x33 pixels in the frame buffer with the color in w12 
-		of a aleatory pattern pixel by pixel.
+    @brief:
+    draw a chunk of ~ 33x33 pixels in the frame buffer with the color in w12 
+    of a aleatory pattern pixel by pixel.
 
-	@param: 
-		x3: x coordinate of the chunk
-		x4: y coordinate of the chunk
-		w12: color of the chunk
+    @param: 
+    x3: x coordinate of the chunk
+    x4: y coordinate of the chunk
+    w12: color of the chunk 
+    
+    @return: none 
 
-	@return: none 
+    @note: 
+    - initial address of the chunk in down left corner (x3, x4) 
+	- Use map function to draw a pixel 
+    - Use bluecolorbg1 to draw the chunk
 
-	@note: 
-		- initial address of the chunk in down left corner (x3, x4) 
-		- Use map function to draw a pixel 
-		- Use bluecolorbg1 to draw the chunk
-
-	@saveStack: x4, x3, x30
+    @saveStack: x4, x3, x30
 */
 
 draw_chunk_bg:
@@ -743,16 +743,18 @@ draw_bg_loop0:
 	br x30 
 
 /*
-	@brief: draw the pattern of the sea in the framebuffer
+    @brief: draw the pattern of the sea in the framebuffer
 	
-	@return: none
+    @return: none
 
-	@saveStack: x1, x2, x3, x4, x30
+    @saveStack: x1, x2, x3, x4, x30
 
-	@note: use draw_chunk_bg
+    @note: use draw_chunk_bg
 
-	@ERROR: the size of the pattern is not exact, consequently a part 
-			is overpainted
+    @ERROR: 
+    the size of the pattern is not exact, consequently a part 
+    is overpainted. In consequence, we paint the ocean centered, 
+    leaving a blue frame
 */
 
 draw_sea:
@@ -763,7 +765,7 @@ draw_sea:
 	mov x4, #45
 	mov x1, #14    // en 14 funciona bien
 sea_loop1:
-	mov x2, #20    // en 14 funciona bien 
+	mov x2, #20     
 sea_loop2:
 	bl draw_chunk_bg
 	add x3, x3, #31
