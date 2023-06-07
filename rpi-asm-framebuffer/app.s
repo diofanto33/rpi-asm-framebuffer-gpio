@@ -52,7 +52,8 @@ init_loop:
     bl draw_bg
     bl draw_sea
   
-    bl airplane 
+    bl airplane
+    bl propeller_frame_1
     bl gpio_func
     
     bl actualizarFrameBuffer 
