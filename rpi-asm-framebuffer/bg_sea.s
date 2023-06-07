@@ -729,7 +729,12 @@ draw_chunk_bg:
 */
 
 draw_bg:
-	ldr w24, bluecolorbg2
+    sub sp, sp, #24 
+    str x4, [sp, #16]
+    str x3, [sp, #8]
+    str x30, [sp]
+
+    ldr w24, bluecolorbg2
 	ldr x0, =bufferSecundario
 //	mov x0, x20
 	mov x2, SCREEN_HEIGH    // Y Size
@@ -742,7 +747,12 @@ draw_bg_loop0:
 	cbnz x1, draw_bg_loop0  // Si no terminó la fila, salto
 	sub x2, x2, #1    			// Decrementar contador Y
 	cbnz x2, draw_bg_loop1  // Si no es la última fila, salto	
-	br x30 
+	
+    ldr x4, [sp, #16]
+    ldr x3, [sp, #8]
+    ldr x30, [sp]
+    add sp, sp, #24 
+    br x30 
 
 /*
 	@brief: draw the pattern of the sea in the framebuffer
