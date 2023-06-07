@@ -23,16 +23,17 @@
  * is 54 to 426,to ensure the plane is painted inside the screen.
  *
  * The initial direction of the airplane is set to the CENTER of the minimum square.
- * @saveStack: x3, x4, x5, x30
+ * @saveStack: x3, x4, x5, x12, x30
  */
 
 airplane:
     /* save registers */
-    sub sp, sp, #32
-    str x3, [sp, #24]
-    str x4, [sp, #16]
-    str x5, [sp, #8]
-    str x30, [sp]
+    sub sp, sp, #40
+    str x3, [sp, #32]
+    str x4, [sp, #24]
+    str x5, [sp, #16]
+    str x12, [sp, #8]
+    str x30, [sp, #0]
  
     mov x5, #4 
     
@@ -1271,27 +1272,28 @@ airplane:
     ldr w12, blue0_color 
     bl draw_square 
     
-    ldr x3, [sp, #24]
-    ldr x4, [sp, #16]
-    ldr x5, [sp, #8]
-    ldr x30, [sp]
-    add sp, sp, #32
+    ldr x3, [sp, #32]
+    ldr x4, [sp, #24]
+    ldr x5, [sp, #16]
+    ldr x12, [sp, #8]
+    ldr x30, [sp, #0]
+    add sp, sp, #40
     br x30 
-
-
 
 propeller_frame_1:
      /* save registers */
-    sub sp, sp, #24
-    str x3, [sp, #16]
-    str x4, [sp, #8]
-    str x30, [sp]
+    sub sp, sp, #32
+    str x3, [sp, #24]
+    str x4, [sp, #16]
+    str x12, [sp, #8]
+    str x30, [sp, #0]
     
     /* draw propeller */ 
     
     sub x3, x3, #41
     sub x4, x4, #43 
     ldr w12, gray5_color 
+    mov x5, #4 
     bl draw_square 
 
     add x3, x3, #4 
@@ -1346,47 +1348,35 @@ propeller_frame_1:
     ldr w12, gray5_color 
     bl draw_square 
 
-    ldr x3, [sp, #16]
-    ldr x4, [sp, #8]
-    ldr x30, [sp]
-    add sp, sp, #24
+    ldr x3, [sp, #24]
+    ldr x4, [sp, #16]
+    ldr x12, [sp, #8]
+    ldr x30, [sp, #0]
+    add sp, sp, #32
     br x30
 
 propeller_frame_2:
      /* save registers */
-    sub sp, sp, #24
-    str x3, [sp, #16]
-    str x4, [sp, #8]
-    str x30, [sp]
-    
-    /* draw propeller */
+    sub sp, sp, #32
+    str x3, [sp, #24]
+    str x4, [sp, #16]
+    str x12, [sp, #8]
+    str x30, [sp, #0]
     
     sub x3, x3, #29
     sub x4, x4, #43 
     ldr w12, gray5_color 
+    mov x5, #4
     bl draw_square 
 
     add x3, x3, #56
     bl draw_square
 
-    ldr x3, [sp, #16]
-    ldr x4, [sp, #8]
-    ldr x30, [sp]
-    add sp, sp, #24
+    ldr x3, [sp, #24]
+    ldr x4, [sp, #16]
+    ldr x12, [sp, #8]
+    ldr x30, [sp, #0]
+    add sp, sp, #32
     br x30
-
-draw_airplane:
-    sub sp, sp, #8
-    str x30, [sp]
-
-    mov x3, #100 
-    mov x4, #100
-    bl airplane
-    bl propeller_frame_1
-
-    ldr x30, [sp]
-    add sp, sp, #8
-    br x30
-
 
 .endif

@@ -41,33 +41,28 @@ main:
     adr x1, dir_frameBuffer
     /* store the memory address of the frame-buffer in dir_frameBuffer */
 	str x0, [x1]
+init_loop:
+	/* draw the background */ 
+    bl draw_bg
+    bl draw_sea
 
-	bl draw_bg
-    bl draw_airplane
-   
-    bl actualizarFrameBuffer
-//	bl doDelay
-    
-   
-    
-/*
-airplane_loop:
-    bl draw_bg
-    mov x3, #100 
-    mov x4, #100
-    bl airplane
+    /* draw the airplane */ 
+    mov x3, #200
+    mov x4, #200 
+    bl airplane 
     bl propeller_frame_1
-    bl actualizarFrameBuffer
-    bl doDelay
-    
+    /* copy the contents of the secondary buffer to the frame-buffer */ 
+    bl actualizarFrameBuffer 
+    /* draw the background */ 
     bl draw_bg
-    mov x3, #100 
-    mov x4, #100
+    bl draw_sea
+
+    /* draw the airplane */ 
+    mov x3, #200 
+    mov x4, #200 
     bl airplane
     bl propeller_frame_2
-    bl actualizarFrameBuffer 
-    bl doDelay
-    b airplane_loop
-*/
-InfLoop:
-    b InfLoop
+
+    /* copy the contents of the secondary buffer to the frame-buffer */ 
+    bl actualizarFrameBuffer
+    b init_loop

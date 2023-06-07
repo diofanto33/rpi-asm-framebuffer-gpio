@@ -759,18 +759,18 @@ draw_sea:
 	sub sp, sp, #8
 	str x30, [sp]
 	
-	mov x3, #31 
-	mov x4, #32
-	mov x1, #14
+	mov x3, #8
+	mov x4, #45
+	mov x1, #14    // en 14 funciona bien
 sea_loop1:
-	mov x2, #14
+	mov x2, #20    // en 14 funciona bien 
 sea_loop2:
 	bl draw_chunk_bg
 	add x3, x3, #31
 	sub x2, x2, #1 
 	cbnz x2, sea_loop2
-	mov x3, x5 
-	add x4, x4, x6
+	mov x3, #10 
+	add x4, x4, #32
 	sub x1, x1, #1 
 	cbnz x1, sea_loop1
 
