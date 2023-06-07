@@ -1,4 +1,3 @@
-
 .include "utils.s" 
 .include "data.s"
 .include "bg_sea.s"
@@ -9,23 +8,26 @@
 main:
 	mov x20, x0
    
-	bl draw_bg
-	mov x5, xzr
-	bl draw_sea
+init_loop:
+    bl draw_bg
+
+// 	bl draw_sea
     
     mov x3, #100 
     mov x4, #100 
-    mov x5, #4
     bl airplane
-    
     bl propeller_frame_1
+    bl doDelay
 
-    mov x3, #300
+    bl draw_bg
+//  bl draw_sea
+
+    mov x3, #100 
     mov x4, #100 
-    mov x5, #4
     bl airplane
     bl propeller_frame_2
-
+    bl doDelay
+    b init_loop
 
 
 InfLoop:
