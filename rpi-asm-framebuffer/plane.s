@@ -29,12 +29,12 @@
 
 airplane:
     /* save registers */
-    sub sp, sp, #24
-//    str x3, [sp, #32]
-//    str x4, [sp, #24]
+    sub sp, sp, #40
+    str x3, [sp, #32]
+    str x4, [sp, #24]
     str x5, [sp, #16]
     str x24, [sp, #8]
-    str x30, [sp, #0]
+    str x30, [sp]
  
     mov x5, #4 
     
@@ -1273,12 +1273,12 @@ airplane:
     ldr w24, blue0_color 
     bl draw_square 
     
-//    ldr x3, [sp, #32]
-//    ldr x4, [sp, #24]
+    ldr x3, [sp, #32]
+    ldr x4, [sp, #24]
     ldr x5, [sp, #16]
     ldr x24, [sp, #8]
-    ldr x30, [sp, #0]
-    add sp, sp, #24
+    ldr x30, [sp]
+    add sp, sp, #40
     br x30 
 
 /*
