@@ -2,6 +2,7 @@
 .include "utils.s" 
 .include "data.s"
 .include "bg_sea.s"
+.include "plane.s"
 
 .globl main
 
@@ -42,29 +43,31 @@ main:
 	str x0, [x1]
 
 	bl draw_bg
-	mov x5, #99
-	mov x6, #32
-	bl draw_sea
-	bl actualizarFrameBuffer
-	bl doDelay
-
-sea_loop:
-	bl draw_bg
-	mov x5, #102
-	mov x6, #32
-	bl draw_sea
-	bl actualizarFrameBuffer
-	bl doDelay
-
-	bl draw_bg
-	mov x5, #99
-	mov x6, #32
-	bl draw_sea 
-	bl actualizarFrameBuffer
-	bl doDelay
-
-	b sea_loop
-
-
+    bl draw_airplane
+   
+    bl actualizarFrameBuffer
+//	bl doDelay
+    
+   
+    
+/*
+airplane_loop:
+    bl draw_bg
+    mov x3, #100 
+    mov x4, #100
+    bl airplane
+    bl propeller_frame_1
+    bl actualizarFrameBuffer
+    bl doDelay
+    
+    bl draw_bg
+    mov x3, #100 
+    mov x4, #100
+    bl airplane
+    bl propeller_frame_2
+    bl actualizarFrameBuffer 
+    bl doDelay
+    b airplane_loop
+*/
 InfLoop:
     b InfLoop

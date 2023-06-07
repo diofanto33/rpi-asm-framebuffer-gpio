@@ -33,7 +33,7 @@ map:
 			
     @param: x3, x4: coordinates of the pixel to map
     @param: x5: height and width of the square, does not modify it 
-    @param: x10: color of the square
+    @param: x12: color of the square
     @save_stack: x3, x4, x6, x7, x30 
 */	
 
@@ -50,7 +50,7 @@ draw_square:
 draw_square_loop1:
     mov x7, x5     		// width
 draw_square_loop2:
-    stur w10, [x0]
+    stur w12, [x0]
     add x0, x0, #4
     sub x7, x7, #1 
     cbnz x7, draw_square_loop2
