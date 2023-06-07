@@ -752,8 +752,6 @@ draw_bg_loop0:
 
 /*
 	@brief: draw the pattern of the sea in the framebuffer
-
-	@param: x5 pixel to move in coordinate x
 	
 	@return: none
 
@@ -773,7 +771,7 @@ draw_sea:
 	str x4, [sp, #8]
 	str x30, [sp]
 	
-	mov x3, x5 
+	mov x3, #0  
 	mov x4, #32
 	mov x1, #16
 sea_loop1:
@@ -783,7 +781,7 @@ sea_loop2:
 	add x3, x3, #31
 	sub x2, x2, #1 
 	cbnz x2, sea_loop2
-	mov x3, x5 
+	mov x3, #0 
 	add x4, x4, #32
 	sub x1, x1, #1 
 	cbnz x1, sea_loop1
