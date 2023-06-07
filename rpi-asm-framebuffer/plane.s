@@ -1280,6 +1280,13 @@ airplane:
     add sp, sp, #40
     br x30 
 
+/*
+ * @brief: draw propeller frame 1 
+ * @param: x3 - x coordinate of the center of the airplane 
+ * @param: x4 - y coordinate of the center of the airplane
+ * @return: none
+ */ 
+
 propeller_frame_1:
      /* save registers */
     sub sp, sp, #32
