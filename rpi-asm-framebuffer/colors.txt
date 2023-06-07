@@ -1,0 +1,14 @@
+plane:
+    gray1 = #707078
+    gray2 = #505050
+    gray3 = #A8C8E8
+    gray4 = #181818
+    gray5 = #303030
+    gray6 = #F8F8F8
+    blue0 = #7890A0
+    blue1 = #88A8C8
+    blue2 = #C0E0F8
+    blue3 = #1898F8
+    blue4 = #1068F8
+    blue5 = #3050B0
+    blue6 = #40C0F8

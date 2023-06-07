@@ -16,8 +16,9 @@ map:
     str x30, [sp]
 
     mov x21, #4               
-    mov x0, x20               
-    mov x15, 2560              
+    ldr x0, =bufferSecundario
+//	mov x0, x20
+	mov x15, 2560              
     madd x0, x15, x4, x0 	    
     madd x0, x21, x3, x0     
 
@@ -32,7 +33,7 @@ map:
 			
     @param: x3, x4: coordinates of the pixel to map
     @param: x5: height and width of the square, does not modify it 
-    @param: x10: color of the square
+    @param: x12: color of the square
     @save_stack: x3, x4, x6, x7, x30 
 */	
 
@@ -49,7 +50,7 @@ draw_square:
 draw_square_loop1:
     mov x7, x5     		// width
 draw_square_loop2:
-    stur w10, [x0]
+    stur w12, [x0]
     add x0, x0, #4
     sub x7, x7, #1 
     cbnz x7, draw_square_loop2
@@ -82,9 +83,9 @@ squared_bg:
     str x1, [sp, #8] 
     str x30, [sp]
 
-    mov x0, x20;
-    ldr x10, bluecolorbg1
-    ldr x11, bluecolorbg2
+    mov x0, x20
+    ldr w10, green_color1
+    ldr w11, green_color1
 				// x0 direciona un color
     add x8, x0, #4            	// x8 direcciona el otro color
     mov x2, SCREEN_HEIGH     	// y size
@@ -126,5 +127,8 @@ loop_doDelay:
     subs x9, x9, 1
     b.ne loop_doDelay    
     br x30 
+
+/* hitbox */ 
+
 
 .endif

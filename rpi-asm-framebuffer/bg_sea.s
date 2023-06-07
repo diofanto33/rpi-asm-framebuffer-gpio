@@ -5,23 +5,23 @@
 .include "utils.s"
 
 /*
-	@brief:
-		draw a chunk of ~ 33x33 pixels in the frame buffer with the color in w12 
-		of a aleatory pattern pixel by pixel.
+    @brief:
+    draw a chunk of ~ 33x33 pixels in the frame buffer with the color in w12 
+    of a aleatory pattern pixel by pixel.
 
-	@param: 
-		x3: x coordinate of the chunk
-		x4: y coordinate of the chunk
-		w12: color of the chunk
+    @param: 
+    x3: x coordinate of the chunk
+    x4: y coordinate of the chunk
+    w12: color of the chunk 
+    
+    @return: none 
 
-	@return: none 
+    @note: 
+    - initial address of the chunk in down left corner (x3, x4) 
+	- Use map function to draw a pixel 
+    - Use bluecolorbg1 to draw the chunk
 
-	@note: 
-		- initial address of the chunk in down left corner (x3, x4) 
-		- Use map function to draw a pixel 
-		- Use bluecolorbg1 to draw the chunk
-
-	@saveStack: x4, x3, x30
+    @saveStack: x4, x3, x30
 */
 
 draw_chunk_bg:
@@ -35,7 +35,8 @@ draw_chunk_bg:
 	add x3, x3, #18
 	bl map
 	str w12, [x0]
-	add x0, x0, #4
+	add x3, x3, #1
+	bl map
 	str w12, [x0]
 
 	sub x3, x3, #18
@@ -52,7 +53,8 @@ draw_chunk_bg:
 	add x3, x3, #9
 	bl map 
 	str w12, [x0]
-	add x0, x0, #4
+	add x3, x3, #1 
+	bl map 
 	str w12, [x0]
 
 	add x3, x3, #7
@@ -725,14 +727,9 @@ draw_chunk_bg:
 */
 
 draw_bg:
-	sub sp, sp, #24
-	str x2, [sp, #16]
-	str x1, [sp, #8]
-	str x30, [sp]
-	
 	ldr w12, bluecolorbg2
-
-	mov x0, x20
+	ldr x0, =bufferSecundario
+//	mov x0, x20
 	mov x2, SCREEN_HEIGH    // Y Size
 draw_bg_loop1:
 	mov x1, SCREEN_WIDTH    // X Size
@@ -742,56 +739,50 @@ draw_bg_loop0:
 	sub x1, x1, #1    			// Decrementar contador X
 	cbnz x1, draw_bg_loop0  // Si no terminó la fila, salto
 	sub x2, x2, #1    			// Decrementar contador Y
-	cbnz x2, draw_bg_loop1  // Si no es la última fila, salto
-	
-	ldr x2, [sp, #16]
-	ldr x1, [sp, #8]
-	ldr x30, [sp]
-	add sp, sp, #24
+	cbnz x2, draw_bg_loop1  // Si no es la última fila, salto	
 	br x30 
 
 /*
+<<<<<<< HEAD
 	@brief: draw the pattern of the sea in the framebuffer
+=======
+    @brief: draw the pattern of the sea in the framebuffer
+>>>>>>> expDie
 	
-	@return: none
+    @return: none
 
-	@saveStack: x1, x2, x3, x4, x30
+    @saveStack: x1, x2, x3, x4, x30
 
-	@note: use draw_chunk_bg
+    @note: use draw_chunk_bg
 
-	@ERROR: the size of the pattern is not exact, consequently a part 
-			is overpainted
+    @ERROR: 
+    the size of the pattern is not exact, consequently a part 
+    is overpainted. In consequence, we paint the ocean centered, 
+    leaving a blue frame
 */
 
 draw_sea:
-	sub sp, sp, #40
-	str x1, [sp, #32]
-	str x2, [sp, #24]
-	str x3, [sp, #16]
-	str x4, [sp, #8]
+	sub sp, sp, #8
 	str x30, [sp]
 	
-	mov x3, #0  
-	mov x4, #32
-	mov x1, #16
+	mov x3, #8
+	mov x4, #45
+	mov x1, #14    // en 14 funciona bien
+
 sea_loop1:
-	mov x2, #21 
+	mov x2, #20     
 sea_loop2:
 	bl draw_chunk_bg
 	add x3, x3, #31
 	sub x2, x2, #1 
 	cbnz x2, sea_loop2
-	mov x3, #0 
+	mov x3, #10 
 	add x4, x4, #32
 	sub x1, x1, #1 
 	cbnz x1, sea_loop1
 
-	ldr x1, [sp, #32]
-	ldr x2, [sp, #24]
-	ldr x3, [sp, #16]
-	ldr x4, [sp, #8]
 	ldr x30, [sp]
-	add sp, sp, #40
+	add sp, sp, #8
 	br x30
 
 .endif

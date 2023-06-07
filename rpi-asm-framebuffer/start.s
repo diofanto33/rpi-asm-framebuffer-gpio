@@ -1,5 +1,7 @@
 	.text
 	.org 0x80000
+	
+	.include "data.s"
 
 	// Setup Frame Buffer
 	.equ SCREEN_WIDTH, 		640
