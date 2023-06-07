@@ -128,4 +128,9 @@ loop_doDelay:
     b.ne loop_doDelay    
     br x30 
 
+/* hitbox */ 
+
+
+
+
 .endif
