@@ -29,14 +29,15 @@
 
 airplane:
     /* save registers */
-    sub sp, sp, #40
+    sub sp, sp, #48
+    str x6, [sp, #40]
     str x3, [sp, #32]
     str x4, [sp, #24]
     str x5, [sp, #16]
     str x24, [sp, #8]
     str x30, [sp]
  
-    mov x5, #4 
+    mov x5, #4
     
     /* first line from bottom to top (line 1, lft -> rgt)*/
 
@@ -45,1202 +46,1283 @@ airplane:
     ldr w24, blue1_color
     bl draw_square
 
-    add x3, x3, #56
+    mov x6, #14
+    mul x5, x5, x6
+    add x3, x3, x5
+    udiv x5, x5, x6
     bl draw_square
 
     /* next line (line 2, rgt -> lft) */ 
 
-    sub x4, x4, #4 
-    add x3, x3, #8
+    sub x4, x4, x5
+    mov x6, #2
+    mul x5, x5, x6
+    add x3, x3, x5
+    udiv x5, x5, x6
     ldr w24, gray1_color 
     bl draw_square
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     ldr w24, gray2_color
     bl draw_square
-    
-    sub x3, x3, #4 
+
+    sub x3, x3, x5
     ldr w24, blue2_color
     bl draw_square
     
-    sub x3, x3, #4 
+    sub x3, x3, x5
     ldr w24, gray2_color
     bl draw_square
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     ldr w24, blue0_color
     bl draw_square
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     ldr w24, blue1_color
     bl draw_square
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     bl draw_square
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     ldr w24, gray3_color
     bl draw_square
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     bl draw_square
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     bl draw_square
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     bl draw_square
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     bl draw_square
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     ldr w24, blue1_color
     bl draw_square
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     bl draw_square
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     ldr w24, blue0_color
     bl draw_square
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     ldr w24, gray2_color
     bl draw_square
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     ldr w24, blue2_color
     bl draw_square
     
-    sub x3, x3, #4 
+    sub x3, x3, x5
     ldr w24, gray2_color
     bl draw_square
     
-    sub x3, x3, #4
+    sub x3, x3, x5
     ldr w24, gray1_color 
     bl draw_square
 
     /* next line (line 3, lft -> rgt) */ 
 
-    sub x4, x4, #4 
+    sub x4, x4, x5
     ldr w24, blue0_color
     bl draw_square
     
-    add x3, x3, #4 
+    add x3, x3, x5
     bl draw_square
 
-    add x3, x3, #4 
+    add x3, x3, x5
     ldr w24, gray6_color
     bl draw_square
 
-    add x3, x3, #4 
+    add x3, x3, x5
     ldr w24, gray1_color
     bl draw_square
 
-    add x3, x3, #4 
+    add x3, x3, x5
     ldr w24, blue0_color
     bl draw_square
 
-    add x3, x3, #4 
+    add x3, x3, x5
     ldr w24, gray3_color
     bl draw_square
 
-    add x3, x3, #4 
+    add x3, x3, x5
     ldr w24, blue1_color
     bl draw_square
 
-    add x3, x3, #4 
+    add x3, x3, x5
     ldr w24, gray3_color
     bl draw_square
     
-    add x3, x3, #4 
+    add x3, x3, x5
     bl draw_square
 
-    add x3, x3, #4 
+    add x3, x3, x5
     ldr w24, blue1_color
     bl draw_square
 
-    add x3, x3, #4 
+    add x3, x3, x5
     ldr w24, gray3_color
     bl draw_square
 
-    add x3, x3, #4 
+    add x3, x3, x5
     bl draw_square
 
-    add x3, x3, #4 
+    add x3, x3, x5
     ldr w24, blue1_color
     bl draw_square
 
-    add x3, x3, #4 
+    add x3, x3, x5
     ldr w24, gray3_color
     bl draw_square
     
-    add x3, x3, #4 
+    add x3, x3, x5
     ldr w24, blue0_color
     bl draw_square
 
-    add x3, x3, #4 
+    add x3, x3, x5
     ldr w24, gray1_color
     bl draw_square
 
-    add x3, x3, #4 
+    add x3, x3, x5
     ldr w24, gray6_color
     bl draw_square
     
-    add x3, x3, #4 
+    add x3, x3, x5
     ldr w24, blue0_color
     bl draw_square
     
-    add x3, x3, #4 
+    add x3, x3, x5
     bl draw_square
 
     /* next line (line 4, rgt -> lft) */ 
     
-    sub x4, x4, #4 
+    sub x4, x4, x5
     ldr w24, gray1_color
     bl draw_square
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     ldr w24, blue1_color
     bl draw_square
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     ldr w24, blue2_color
     bl draw_square
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     ldr w24, blue0_color
     bl draw_square
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     bl draw_square
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     bl draw_square
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     bl draw_square
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     bl draw_square
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     bl draw_square
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     bl draw_square
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     bl draw_square
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     bl draw_square
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     bl draw_square
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     bl draw_square
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     bl draw_square
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     bl draw_square
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     ldr w24, blue2_color
     bl draw_square
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     ldr w24, blue1_color
     bl draw_square
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     ldr w24, gray1_color
     bl draw_square
 
    /* next line (line 5, lft -> rgt) */ 
 
-    sub x4, x4, #4 
-    add x3, x3, #8
+    sub x4, x4, x5
+    mov x6, #2
+    mul x5, x5, x6
+    add x3, x3, x5
+    udiv x5, x5, x6
     ldr w24, blue1_color
     bl draw_square
 
-    add x3, x3, #56
+    mov x6, #14
+    mul x5, x5, x6
+    add x3, x3, x5
+    udiv x5, x5, x6
     bl draw_square
     
     /* next line (line 6, rgt -> lft) */ 
 
-    sub x4, x4, #4 
+    sub x4, x4, x5
     ldr w24, blue0_color
     bl draw_square
-    
-    sub x3, x3, #56
+
+    mov x6, #14
+    mul x5, x5, x6
+    sub x3, x3, x5
+    udiv x5, x5, x6
     bl draw_square
 
     /* next line (line 7, lft -> rgt) */ 
     
-    sub x4, x4, #4 
+    sub x4, x4, x5
     bl draw_square
 
-    add x3, x3, #56 
+    mov x6, #14
+    mul x5, x5, x6
+    add x3, x3, x5
+    udiv x5, x5, x6
     bl draw_square
 
     /* next line (line 8, rgt -> lft) */ 
     
-    sub x4, x4, #4 
+    sub x4, x4, x5
     ldr w24, blue1_color
     bl draw_square
 
-    add x3, x3, #4 
+    add x3, x3, x5
     ldr w24, gray1_color
     bl draw_square
 
-    sub x3, x3, #8
-    bl draw_square
-    
-    sub x3, x3, #48
+    mov x6, #2
+    mul x5, x5, x6
+    sub x3, x3, x5
+    udiv x5, x5, x6
     bl draw_square
 
-    sub x3, x3, #4 
+    mov x6, #12
+    mul x5, x5, x6
+    sub x3, x3, x5
+    udiv x5, x5, x6
+    bl draw_square
+
+    sub x3, x3, x5
     ldr w24, blue1_color
     bl draw_square
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     ldr w24, gray1_color
     bl draw_square
 
     /* next line (line 9, lft -> rgt) */ 
     
-    sub x4, x4, #4 
+    sub x4, x4, x5
     ldr w24, blue1_color 
     bl draw_square
 
-    add x3, x3, #4 
+    add x3, x3, x5
     ldr w24, gray3_color 
     bl draw_square
 
-    add x3, x3, #4 
+    add x3, x3, x5
     ldr w24, blue1_color 
     bl draw_square
 
-    add x3, x3, #48 
+    mov x6, #12
+    mul x5, x5, x6
+    add x3, x3, x5
+    udiv x5, x5, x6
     bl draw_square 
 
-    add x3, x3, #4 
+    add x3, x3, x5
     ldr w24, gray3_color 
     bl draw_square
     
-    add x3, x3, #4 
+    add x3, x3, x5
     ldr w24, blue1_color
     bl draw_square
 
     /* next line (line 10, rgt -> lft) */  
     
-    sub x4, x4, #4 
+    sub x4, x4, x5
     ldr w24, blue2_color 
     bl draw_square
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     ldr w24, gray3_color
     bl draw_square 
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     ldr w24, blue2_color 
     bl draw_square
 
-    sub x3, x3, #48
+    mov x6, #12
+    mul x5, x5, x6
+    sub x3, x3, x5
+    udiv x5, x5, x6
     bl draw_square
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     ldr w24, gray3_color 
     bl draw_square 
 
-    sub x3, x3, #4 
-    ldr w24, blue2_color 
+    sub x3, x3, x5
+    ldr w24, blue2_color
     bl draw_square 
 
     /* next line (line 11, lft -> rgt) */ 
     
-    sub x4, x4, #4 
+    sub x4, x4, x5
     ldr w24, gray1_color 
     bl draw_square 
 
-    add x3, x3, #4 
+    add x3, x3, x5
     ldr w24, blue1_color
     bl draw_square
 
-    add x3, x3, #4 
+    add x3, x3, x5
     ldr w24, gray1_color
     bl draw_square
 
-    add x3, x3, #48
+    mov x6, #12
+    mul x5, x5, x6
+    add x3, x3, x5
+    udiv x5, x5, x6
     bl draw_square
 
-    add x3, x3, #4 
+    add x3, x3, x5
     ldr w24, blue1_color 
     bl draw_square
 
-    add x3, x3, #4 
+    add x3, x3, x5
     ldr w24, gray1_color 
     bl draw_square
 
    /* next line (line 12, rgt -> lft) */ 
 
-    sub x4, x4, #4 
+    sub x4, x4, x5
     ldr w24, gray2_color
     bl draw_square
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     ldr w24, blue1_color
     bl draw_square
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     ldr w24, gray2_color 
     bl draw_square
 
-    sub x3, x3, #48
+    mov x6, #12
+    mul x5, x5, x6
+    sub x3, x3, x5
+    udiv x5, x5, x6
     bl draw_square
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     ldr w24, blue1_color 
     bl draw_square 
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     ldr w24, gray2_color 
     bl draw_square
 
     /* next line (line 13, lft -> rgt) */  
 
-    sub x4, x4, #4 
+    sub x4, x4, x5
     ldr w24, gray2_color
     bl draw_square
 
-    add x3, x3, #4 
+    add x3, x3, x5
     ldr w24, blue1_color
     bl draw_square
 
-    add x3, x3, #4 
+    add x3, x3, x5
     ldr w24, gray2_color 
     bl draw_square
 
-    add x3, x3, #48
+    mov x6, #12
+    mul x5, x5, x6
+    add x3, x3, x5
+    udiv x5, x5, x6
     bl draw_square
 
-    add x3, x3, #4 
+    add x3, x3, x5
     ldr w24, blue1_color 
     bl draw_square 
 
-    add x3, x3, #4 
+    add x3, x3, x5
     ldr w24, gray2_color 
     bl draw_square
 
     /* next line (line 14, rgt -> lft) */ 
     
-    sub x4, x4, #4 
+    sub x4, x4, x5
     bl draw_square 
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     ldr w24, blue1_color 
     bl draw_square 
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     ldr w24, gray2_color 
     bl draw_square 
 
-    sub x3, x3, #16 
+    mov x6, #4
+    mul x5, x5, x6
+    sub x3, x3, x5
+    udiv x5, x5, x6
     bl draw_square
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     bl draw_square
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     ldr w24,blue0_color 
     bl draw_square 
     
-    sub x3, x3, #4 
+    sub x3, x3, x5
     ldr w24, gray2_color 
     bl draw_square 
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     bl draw_square 
 
-    sub x3, x3, #16 
+    mov x6, #4
+    mul x5, x5, x6
+    sub x3, x3, x5
+    udiv x5, x5, x6
     bl draw_square 
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     ldr w24, blue0_color
     bl draw_square 
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     ldr w24, gray2_color 
     bl draw_square 
     
     /* next line (line 15, lft -> rgt) */
    
-    sub x4, x4, #4
+    sub x4, x4, x5
     ldr w24, gray1_color
     bl draw_square 
 
-    add x3, x3, #4 
+    add x3, x3, x5
     ldr w24, gray3_color
     bl draw_square 
 
-    add x3, x3, #4 
+    add x3, x3, x5
     ldr w24, gray1_color 
     bl draw_square 
 
-    add x3, x3, #4 
+    add x3, x3, x5
     ldr w24, gray2_color 
     bl draw_square
     
-    add x3, x3, #4 
+    add x3, x3, x5
     ldr w24, gray1_color 
     bl draw_square
 
-    add x3, x3, #4 
+    add x3, x3, x5
     ldr w24, blue0_color 
     bl draw_square
 
-    add x3, x3, #4 
+    add x3, x3, x5
     bl draw_square
 
-    add x3, x3, #4 
+    add x3, x3, x5
     ldr w24, gray1_color 
     bl draw_square
     
-    add x3, x3, #4 
+    add x3, x3, x5
     ldr w24, blue1_color
     bl draw_square
 
-    add x3, x3, #4 
+    add x3, x3, x5
     ldr w24, gray1_color
     bl draw_square
     
-    add x3, x3, #4 
+    add x3, x3, x5
     ldr w24, blue0_color 
     bl draw_square
     
-    add x3, x3, #4 
+    add x3, x3, x5
     bl draw_square
     
-    add x3, x3, #4 
+    add x3, x3, x5
     ldr w24, gray1_color 
     bl draw_square
     
-    add x3, x3, #4 
+    add x3, x3, x5
     ldr w24, gray2_color
     bl draw_square 
 
-    add x3, x3, #4 
+    add x3, x3, x5
     ldr w24, gray1_color
     bl draw_square
 
-    add x3, x3, #4 
+    add x3, x3, x5
     ldr w24, gray3_color 
     bl draw_square
     
-    add x3, x3, #4 
+    add x3, x3, x5
     ldr w24, gray1_color
     bl draw_square
     
     /* next line (line 16, rgt -> lft) */ 
     
-    sub x4, x4, #4
-    add x3, x3, #16
+    sub x4, x4, x5
+    mov x6, #4
+    mul x5, x5, x6
+    add x3, x3, x5
+    udiv x5, x5, x6
     bl draw_square
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     bl draw_square
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     ldr w24, blue0_color 
     bl draw_square 
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     bl draw_square
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     bl draw_square
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     ldr w24, blue2_color 
     bl draw_square 
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     ldr w24, blue0_color
     bl draw_square
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     bl draw_square 
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     ldr w24, blue1_color
     bl draw_square 
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     bl draw_square 
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     bl draw_square
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     ldr w24, blue0_color
     bl draw_square 
 
-    sub x3, x3, #4
+    sub x3, x3, x5
     ldr w24, gray3_color 
     bl draw_square
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     ldr w24, blue0_color 
     bl draw_square
     
-    sub x3, x3, #4 
+    sub x3, x3, x5
     ldr w24, blue1_color 
     bl draw_square
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     bl draw_square 
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     bl draw_square
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     ldr w24, blue0_color 
     bl draw_square 
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     bl draw_square 
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     ldr w24, blue2_color
     bl draw_square
     
-    sub x3, x3, #4 
+    sub x3, x3, x5
     ldr w24, blue0_color 
     bl draw_square 
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     bl draw_square 
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     bl draw_square 
      
-    sub x3, x3, #4 
+    sub x3, x3, x5
     ldr w24, gray1_color 
     bl draw_square 
     
-    sub x3, x3, #4 
+    sub x3, x3, x5
     bl draw_square
 
     /* next line (line 17, lft -> rgt) */
 
-    sub x4, x4, #4 
-    sub x3, x3, #12 
+    sub x4, x4, x5
+    mov x6, #3
+    mul x5, x5, x6
+    sub x3, x3, x5
+    udiv x5, x5, x6
     ldr w24, blue5_color 
     bl draw_square
 
-    add x3, x3, #4 
+    add x3, x3, x5
     ldr w24, blue0_color 
     bl draw_square 
 
-    add x3, x3, #4 
+    add x3, x3, x5
     ldr w24, blue1_color
     bl draw_square 
 
-    add x3, x3, #4 
+    add x3, x3, x5
     ldr w24, gray3_color 
     bl draw_square 
 
-    add x3, x3, #4 
+    add x3, x3, x5
     ldr w24, blue2_color 
     bl draw_square 
 
-    add x3, x3, #4 
+    add x3, x3, x5
     bl draw_square
     
-    add x3, x3, #4 
+    add x3, x3, x5
     ldr w24, gray3_color
     bl draw_square 
     
-    add x3, x3, #4 
+    add x3, x3, x5
     ldr w24, blue1_color 
     bl draw_square 
 
-    add x3, x3, #4 
+    add x3, x3, x5
     ldr w24, gray6_color 
     bl draw_square 
 
-    add x3, x3, #4 
+    add x3, x3, x5
     ldr w24, blue0_color 
     bl draw_square 
 
-    add x3, x3, #4 
+    add x3, x3, x5
     ldr w24, blue1_color 
     bl draw_square 
 
-    add x3, x3, #4 
+    add x3, x3, x5
     ldr w24, gray3_color 
     bl draw_square 
 
-    add x3, x3, #4 
+    add x3, x3, x5
     bl draw_square 
 
-    add x3, x3, #4 
+    add x3, x3, x5
     ldr w24, blue1_color 
     bl draw_square 
 
-    add x3, x3, #4 
+    add x3, x3, x5
     ldr w24, gray1_color 
     bl draw_square 
 
-    add x3, x3, #4 
+    add x3, x3, x5
     ldr w24, blue2_color
     bl draw_square 
 
-    add x3, x3, #4 
+    add x3, x3, x5
     ldr w24, gray1_color 
     bl draw_square 
 
-    add x3, x3, #4 
+    add x3, x3, x5
     ldr w24, blue1_color
     bl draw_square
 
-    add x3, x3, #4 
+    add x3, x3, x5
     ldr w24, gray3_color
     bl draw_square 
 
-    add x3, x3, #4 
+    add x3, x3, x5
     bl draw_square 
 
-    add x3, x3, #4 
+    add x3, x3, x5
     ldr w24, blue1_color 
     bl draw_square 
 
-    add x3, x3, #4 
+    add x3, x3, x5
     ldr w24, blue0_color 
     bl draw_square 
 
-    add x3, x3, #4 
+    add x3, x3, x5
     ldr w24, gray6_color 
     bl draw_square 
 
-    add x3, x3, #4 
+    add x3, x3, x5
     ldr w24, blue1_color 
     bl draw_square 
 
-    add x3, x3, #4 
+    add x3, x3, x5
     ldr w24, gray3_color 
     bl draw_square 
 
-    add x3, x3, #4 
+    add x3, x3, x5
     ldr w24, blue2_color 
     bl draw_square 
 
-    add x3, x3, #4 
+    add x3, x3, x5
     bl draw_square 
 
-    add x3, x3, #4 
+    add x3, x3, x5
     ldr w24, gray3_color 
     bl draw_square 
     
-    add x3, x3, #4 
+    add x3, x3, x5
     ldr w24, blue1_color
     bl draw_square 
 
-    add x3, x3, #4 
+    add x3, x3, x5
     ldr w24, blue0_color 
     bl draw_square 
 
-    add x3, x3, #4 
+    add x3, x3, x5
     ldr w24, blue5_color
     bl draw_square 
 
     /* next line (line 18, rgt -> lft) */ 
     
-    sub x4, x4, #4 
+    sub x4, x4, x5
     ldr w24, blue3_color
     bl draw_square
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     ldr w24, blue2_color 
     bl draw_square 
     
-    sub x3, x3, #4 
+    sub x3, x3, x5
     ldr w24, gray6_color 
     bl draw_square 
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     bl draw_square 
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     bl draw_square 
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     bl draw_square 
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     ldr w24, blue2_color 
     bl draw_square 
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     ldr w24, gray3_color 
     bl draw_square 
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     ldr w24, blue2_color
     bl draw_square 
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     ldr w24, blue1_color 
     bl draw_square 
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     ldr w24, gray3_color 
     bl draw_square 
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     ldr w24, blue2_color 
     bl draw_square 
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     bl draw_square
     
-    sub x3, x3, #4 
+    sub x3, x3, x5
     ldr w24, blue0_color
     bl draw_square 
     
-    sub x3, x3, #4 
+    sub x3, x3, x5
     ldr w24, gray5_color
     bl draw_square 
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     ldr w24, gray6_color 
     bl draw_square 
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     ldr w24, gray5_color 
     bl draw_square 
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     ldr w24, blue0_color 
     bl draw_square 
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     ldr w24, blue2_color 
     bl draw_square 
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     bl draw_square 
     
-    sub x3, x3, #4 
+    sub x3, x3, x5
     ldr w24, gray3_color 
     bl draw_square 
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     ldr w24, blue1_color 
     bl draw_square 
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     ldr w24, blue2_color 
     bl draw_square 
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     ldr w24, gray3_color
     bl draw_square 
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     ldr w24, blue2_color 
     bl draw_square 
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     ldr w24, gray6_color 
     bl draw_square 
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     bl draw_square 
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     bl draw_square 
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     bl draw_square
     
-    sub x3, x3, #4 
+    sub x3, x3, x5
     ldr w24, blue2_color
     bl draw_square 
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     ldr w24, blue3_color 
     bl draw_square 
     
     /* next line (line 19, lft -> rgt) */ 
 
-    sub x4, x4, #4 
+    sub x4, x4, x5
     ldr w24, blue4_color
     bl draw_square 
 
-    add x3, x3, #4 
+    add x3, x3, x5
     ldr w24, blue0_color
     bl draw_square 
 
-    add x3, x3, #4
+    add x3, x3, x5
     bl draw_square
     
-    add x3, x3, #4 
+    add x3, x3, x5
     ldr w24, blue1_color 
     bl draw_square 
 
-    add x3, x3, #4 
+    add x3, x3, x5
     bl draw_square 
 
-    add x3, x3, #4 
+    add x3, x3, x5
     ldr w24, gray3_color 
     bl draw_square 
 
-    add x3, x3, #4 
+    add x3, x3, x5
     bl draw_square
      
-    add x3, x3, #4 
+    add x3, x3, x5
     ldr w24, blue1_color 
     bl draw_square 
 
-    add x3, x3, #4 
+    add x3, x3, x5
     ldr w24, blue2_color
     bl draw_square 
 
-    add x3, x3, #4 
+    add x3, x3, x5
     ldr w24, gray3_color 
     bl draw_square
      
-    add x3, x3, #4 
+    add x3, x3, x5
     ldr w24, blue2_color 
     bl draw_square 
     
-    add x3, x3, #4 
+    add x3, x3, x5
     ldr w24, gray6_color 
     bl draw_square 
 
-    add x3, x3, #4 
+    add x3, x3, x5
     ldr w24, blue2_color 
     bl draw_square 
 
-    add x3, x3, #4 
+    add x3, x3, x5
     ldr w24, gray1_color
     bl draw_square 
 
-    add x3, x3, #4 
+    add x3, x3, x5
     mov w24, wzr
     bl draw_square 
 
-    add x3, x3, #4 
+    add x3, x3, x5
     ldr w24, gray1_color 
     bl draw_square 
 
-    add x3, x3, #4 
+    add x3, x3, x5
     mov w24, wzr
     bl draw_square 
 
-    add x3, x3, #4 
+    add x3, x3, x5
     ldr w24, gray1_color 
     bl draw_square 
 
-    add x3, x3, #4 
+    add x3, x3, x5
     ldr w24, blue2_color 
     bl draw_square 
 
-    add x3, x3, #4 
+    add x3, x3, x5
     ldr w24, gray6_color 
     bl draw_square 
 
-    add x3, x3, #4 
+    add x3, x3, x5
     ldr w24, blue2_color 
     bl draw_square 
 
-    add x3, x3, #4 
+    add x3, x3, x5
     ldr w24, gray3_color 
     bl draw_square 
     
-    add x3, x3, #4 
+    add x3, x3, x5
     ldr w24, blue2_color 
     bl draw_square 
 
-    add x3, x3, #4 
+    add x3, x3, x5
     ldr w24, blue1_color 
     bl draw_square 
 
-    add x3, x3, #4 
+    add x3, x3, x5
     ldr w24, gray3_color 
     bl draw_square 
 
-    add x3, x3, #4 
+    add x3, x3, x5
     bl draw_square 
 
-    add x3, x3, #4 
+    add x3, x3, x5
     ldr w24, blue1_color
     bl draw_square 
 
-    add x3, x3, #4 
+    add x3, x3, x5
     bl draw_square 
 
-    add x3, x3, #4 
+    add x3, x3, x5
     ldr w24, blue0_color
     bl draw_square 
 
-    add x3, x3, #4 
+    add x3, x3, x5
     bl draw_square 
 
-    add x3, x3, #4 
+    add x3, x3, x5
     ldr w24, blue4_color 
     bl draw_square
 
     
     /* next line (line 20, rgt -> lft) */
 
-    sub x4, x4, #4 
-    sub x3, x3, #28 
+    sub x4, x4, x5
+    mov x6, #7
+    mul x5, x5, x6
+    sub x3, x3, x5
+    udiv x5, x5, x6
     ldr w24, gray1_color 
     bl draw_square 
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     ldr w24, blue2_color 
     bl draw_square 
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     ldr w24, blue3_color
     bl draw_square 
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     ldr w24, gray1_color 
     bl draw_square 
     
-    sub x3, x3, #4 
+    sub x3, x3, x5
     ldr w24, blue0_color 
     bl draw_square 
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     ldr w24, blue1_color
     bl draw_square 
     
-    sub x3, x3, #4 
+    sub x3, x3, x5
     ldr w24, gray2_color 
     bl draw_square 
 
-    sub x3, x3, #4
+    sub x3, x3, x5
     mov w24, wzr 
     bl draw_square
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     ldr w24, gray2_color 
     bl draw_square 
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     mov w24, wzr 
     bl draw_square 
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     ldr w24, gray2_color 
     bl draw_square 
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     ldr w24, blue1_color 
     bl draw_square 
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     ldr w24, blue0_color
     bl draw_square 
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     ldr w24, gray1_color 
     bl draw_square 
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     ldr w24, blue3_color 
     bl draw_square 
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     ldr w24, blue2_color 
     bl draw_square 
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     ldr w24, gray1_color 
     bl draw_square 
 
     /* next line (line 21, lft -> rgt) */ 
     
-    sub x4, x4, #4 
+    sub x4, x4, x5
     bl draw_square 
 
-    add x3, x3, #4 
+    add x3, x3, x5
     ldr w24, blue2_color 
     bl draw_square 
 
-    add x3, x3, #4 
+    add x3, x3, x5
     ldr w24, blue3_color 
     bl draw_square 
 
-    add x3, x3, #20 
+    mov x6, #5
+    mul x5, x5, x6
+    add x3, x3, x5
+    udiv x5, x5, x6
     ldr w24, gray4_color 
     bl draw_square 
 
-    add x3, x3, #4 
+    add x3, x3, x5
     ldr w24, blue1_color
     bl draw_square 
 
-    add x3, x3, #4 
+    add x3, x3, x5
     ldr w24, gray4_color 
     bl draw_square 
 
-    add x3, x3, #20 
+    mov x6, #5
+    mul x5, x5, x6
+    add x3, x3, x5
+    udiv x5, x5, x6
     ldr w24, blue3_color 
     bl draw_square 
 
-    add x3, x3, #4 
+    add x3, x3, x5
     ldr w24, blue2_color 
     bl draw_square 
 
-    add x3, x3, #4 
+    add x3, x3, x5
     ldr w24, gray1_color 
     bl draw_square 
 
     /* next line (line 22, rgt -> lft) */ 
     
-    sub x4, x4, #4 
+    sub x4, x4, x5
     bl draw_square 
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     ldr w24, gray6_color 
     bl draw_square 
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     ldr w24, blue4_color
     bl draw_square 
 
-    sub x3, x3, #20 
+    mov x6, #5
+    mul x5, x5, x6
+    sub x3, x3, x5
+    udiv x5, x5, x6
     ldr w24, blue5_color
     bl draw_square 
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     ldr w24, gray5_color 
     bl draw_square 
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     ldr w24, blue5_color 
     bl draw_square 
 
-    sub x3, x3, #20 
+    mov x6, #5
+    mul x5, x5, x6
+    sub x3, x3, x5
+    udiv x5, x5, x6
     ldr w24, blue4_color 
     bl draw_square 
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     ldr w24, gray6_color 
     bl draw_square 
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     ldr w24, gray1_color 
     bl draw_square 
 
     /* next line (line 23, lft -> rgt) */
     
-    sub x4, x4, #4 
+    sub x4, x4, x5
     bl draw_square 
 
-    add x3, x3, #4 
+    add x3, x3, x5
     ldr w24, blue2_color 
     bl draw_square 
 
-    add x3, x3, #4 
+    add x3, x3, x5
     ldr w24, blue4_color 
     bl draw_square 
 
-    add x3, x3, #20 
+    mov x6, #5
+    mul x5, x5, x6
+    add x3, x3, x5
+    udiv x5, x5, x6
     ldr w24, blue5_color 
     bl draw_square 
 
-    add x3, x3, #4 
+    add x3, x3, x5
     ldr w24, blue4_color
     bl draw_square 
 
-    add x3, x3, #4 
+    add x3, x3, x5
     ldr w24, blue5_color 
     bl draw_square 
 
-    add x3, x3, #20 
+    mov x6, #5
+    mul x5, x5, x6
+    add x3, x3, x5
+    udiv x5, x5, x6
     ldr w24, blue4_color 
     bl draw_square 
 
-    add x3, x3, #4 
+    add x3, x3, x5
     ldr w24, blue2_color 
     bl draw_square 
 
-    add x3, x3, #4 
+    add x3, x3, x5
     ldr w24, gray1_color 
     bl draw_square 
 
     /* next line (line 24, rgt -> lft) */ 
     
-    sub x4, x4, #4 
+    sub x4, x4, x5
     ldr w24, gray2_color
     bl draw_square 
     
-    sub x3, x3, #4 
+    sub x3, x3, x5
     ldr w24, gray1_color 
     bl draw_square 
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     ldr w24, blue5_color 
     bl draw_square 
 
-    sub x3, x3, #20 
+    mov x6, #5
+    mul x5, x5, x6
+    sub x3, x3, x5
+    udiv x5, x5, x6
     bl draw_square 
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     ldr w24, blue3_color 
     bl draw_square 
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     ldr w24, blue5_color 
     bl draw_square 
-    
-    sub x3, x3, #20 
+
+    mov x6, #5
+    mul x5, x5, x6
+    sub x3, x3, x5
+    udiv x5, x5, x6
     bl draw_square 
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     ldr w24, gray1_color
     bl draw_square 
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     ldr w24, gray2_color
     bl draw_square
 
     /* next line (line 25, lft -> rgt) ENGINE */ 
     
-    sub x4, x4, #4 
-    add x3, x3, #28 
+    sub x4, x4, x5
+    mov x6, #7
+    mul x5, x5, x6
+    add x3, x3, x5
+    udiv x5, x5, x6
     ldr w24, blue5_color 
     bl draw_square 
 
-    add x3, x3, #4 
+    add x3, x3, x5
     ldr w24, blue6_color
     bl draw_square 
 
-    add x3, x3, #4 
+    add x3, x3, x5
     ldr w24, blue5_color
     bl draw_square 
 
     /* next line (line 26, rgt -> lft) */ 
     
-    sub x4, x4, #4 
+    sub x4, x4, x5
     bl draw_square 
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     ldr w24, blue6_color 
     bl draw_square 
 
-    sub x3, x3, #4 
+    sub x3, x3, x5
     ldr w24, blue5_color 
     bl draw_square 
 
@@ -1248,37 +1330,45 @@ airplane:
     ldr w24, blue4_color
     bl draw_square
 
-    sub x3, x3, #56
+    mov x6, #14
+    mul x5, x5, x6
+    sub x3, x3, x5
+    udiv x5, x5, x6
     bl draw_square
 
     /* next line (line 27, lft -> rgt) */ 
     
-    sub x4, x4, #4 
-    add x3, x3, #24 
+    sub x4, x4, x5
+    mov x6, #8
+    mul x5, x5, x6
+    add x3, x3, x5
+    sub x3, x3, #2
+    udiv x5, x5, x6
     ldr w24, gray2_color
     bl draw_square 
 
-    add x3, x3, #4 
+    add x3, x3, x5
     ldr w24, blue1_color
     bl draw_square 
 
-    add x3, x3, #4 
+    add x3, x3, x5
     ldr w24, gray2_color 
     bl draw_square 
 
     /* next line (line 28, rgt -> lft) LAST LINE */ 
     
-    sub x4, x4, #4 
-    sub x3, x3, #4 
+    sub x4, x4, x5
+    sub x3, x3, x5
     ldr w24, blue0_color 
     bl draw_square 
-    
+
+    ldr x6, [sp, #40]
     ldr x3, [sp, #32]
     ldr x4, [sp, #24]
     ldr x5, [sp, #16]
     ldr x24, [sp, #8]
     ldr x30, [sp]
-    add sp, sp, #40
+    add sp, sp, #48
     br x30 
 
 /*
@@ -1301,58 +1391,61 @@ propeller_frame_1:
     sub x3, x3, #41
     sub x4, x4, #43 
     ldr w24, gray5_color 
-    mov x5, #4 
+    mov x5, #2
     bl draw_square 
 
-    add x3, x3, #4 
+    add x3, x3, x5
     ldr w24, gray4_color 
     bl draw_square 
 
-    add x3, x3, #4 
+    add x3, x3, x5
     mov w24, wzr
     bl draw_square 
 
-    add x3, x3, #4 
+    add x3, x3, x5
     ldr w24, blue0_color 
     bl draw_square 
 
-    add x3, x3, #4 
+    add x3, x3, x5
     mov w24, wzr 
     bl draw_square 
 
-    add x3, x3, #4 
+    add x3, x3, x5
     ldr w24, gray4_color 
     bl draw_square 
 
-    add x3, x3, #4 
+    add x3, x3, x5
     ldr w24, gray5_color 
     bl draw_square 
 
-    add x3, x3, #32 
+    mov x6, #8
+    mul x5, x5, x6
+    add x3, x3, x5
+    udiv x5, x5, x6
     ldr w24, gray5_color
     bl draw_square 
 
-    add x3, x3, #4 
+    add x3, x3, x5
     ldr w24, gray4_color 
     bl draw_square 
 
-    add x3, x3, #4 
+    add x3, x3, x5
     mov w24, wzr 
     bl draw_square 
 
-    add x3, x3, #4 
+    add x3, x3, x5
     ldr w24, blue0_color 
     bl draw_square 
 
-    add x3, x3, #4 
+    add x3, x3, x5
     mov w24, wzr 
     bl draw_square 
 
-    add x3, x3, #4 
+    add x3, x3, x5
     ldr w24, gray4_color 
     bl draw_square 
 
-    add x3, x3, #4 
+    add x3, x3, x5
     ldr w24, gray5_color 
     bl draw_square 
 
@@ -1374,10 +1467,13 @@ propeller_frame_2:
     sub x3, x3, #29
     sub x4, x4, #43 
     ldr w24, gray5_color 
-    mov x5, #4
+    mov x5, #2
     bl draw_square 
 
-    add x3, x3, #56
+    mov x6, #14
+    mul x5, x5, x6
+    add x3, x3, x5
+    udiv x5, x5, x6
     bl draw_square
 
     ldr x3, [sp, #24]
