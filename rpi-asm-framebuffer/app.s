@@ -44,21 +44,29 @@ main:
     /* direciona el avion */ 
     mov x3, #100
     mov x4, #100
-    
+    mov x5, #3 // Z index del avion
+    mov x27, #0 // frame del avion
+    mov x28, #0 // Offset fondo
 
     bl init_loop
 
 init_loop:
     bl draw_bg
     bl draw_sea
-  
+
+    //bl draw_beach
+
     bl airplane
-    bl propeller_frame_1
+
+
+
+
     bl gpio_func
     
     bl actualizarFrameBuffer 
     bl doDelay
 
+    add x28, x28, #1
     b init_loop
 
 

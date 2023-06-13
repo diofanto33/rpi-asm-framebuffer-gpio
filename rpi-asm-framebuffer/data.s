@@ -25,6 +25,7 @@ bluecolorbg2: .word 0x001B9F
 green_color1: .word 0x00B70C
 
 /* airplane colors */
+red0_color: .word 0xFF0000
 
 blue0_color: .word 0x7890A0
 blue1_color: .word 0x88A8C8

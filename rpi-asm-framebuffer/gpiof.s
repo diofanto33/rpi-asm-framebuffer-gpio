@@ -49,6 +49,9 @@ gpio_func:
 
     cmp w14, key_D			
     b.eq mov_rgt
+
+    cmp w15, key_SPACE
+    b.eq mov_z
     
     ret 
 
@@ -66,6 +69,17 @@ mov_down:
 
 mov_rgt:
     add x3, x3, #3
+    ret
+
+mov_z:
+    cmp x5, #5
+    b.eq sub_z
+    b add_z
+add_z:
+    mov x5, #5
+    ret
+sub_z:
+    mov x5, #3
     ret
 
 .endif

@@ -86,7 +86,7 @@ end_module_y:
 */
 
 map:
-    sub sp, sp, #8    
+    sub sp, sp, #8
     str x30, [sp]
 
     bl module_x

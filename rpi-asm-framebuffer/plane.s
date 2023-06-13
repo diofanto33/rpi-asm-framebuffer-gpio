@@ -15,6 +15,7 @@
 /* @brief: Draws a airplane on the screen at the specified coordinates
  * @param: x3 - The x-coordinate of the plane.
  * @param: x4 - The y-coordinate of the plane.
+ * @param: x5 - The z-size of the plane.
  *
  * PRECONDITION: 
  * xCoordinate and yCoordinate must be within the bounds of the screen.
@@ -29,15 +30,14 @@
 
 airplane:
     /* save registers */
-    sub sp, sp, #48
+    sub sp, sp, #56
+    str x25, [sp, #48]
     str x6, [sp, #40]
     str x3, [sp, #32]
     str x4, [sp, #24]
     str x5, [sp, #16]
     str x24, [sp, #8]
     str x30, [sp]
- 
-    mov x5, #4
     
     /* first line from bottom to top (line 1, lft -> rgt)*/
 
@@ -1216,8 +1216,8 @@ airplane:
     bl draw_square 
 
     add x3, x3, x5
-    ldr w24, blue2_color 
-    bl draw_square 
+    ldr w24, blue2_color
+    bl draw_square
 
     add x3, x3, x5
     ldr w24, blue4_color 
@@ -1302,7 +1302,7 @@ airplane:
     mul x5, x5, x6
     add x3, x3, x5
     udiv x5, x5, x6
-    ldr w24, blue5_color 
+    ldr w24, blue5_color
     bl draw_square 
 
     add x3, x3, x5
@@ -1319,14 +1319,17 @@ airplane:
     bl draw_square 
 
     sub x3, x3, x5
-    ldr w24, blue6_color 
+    ldr w24, blue6_color
     bl draw_square 
 
     sub x3, x3, x5
-    ldr w24, blue5_color 
+    ldr w24, blue5_color
     bl draw_square 
 
-    add x3, x3, #32 
+    mov x6, #8
+    mul x5, x5, x6
+    add x3, x3, x5
+    udiv x5, x5, x6
     ldr w24, blue4_color
     bl draw_square
 
@@ -1339,10 +1342,9 @@ airplane:
     /* next line (line 27, lft -> rgt) */ 
     
     sub x4, x4, x5
-    mov x6, #8
+    mov x6, #6
     mul x5, x5, x6
     add x3, x3, x5
-    sub x3, x3, #2
     udiv x5, x5, x6
     ldr w24, gray2_color
     bl draw_square 
@@ -1360,15 +1362,38 @@ airplane:
     sub x4, x4, x5
     sub x3, x3, x5
     ldr w24, blue0_color 
-    bl draw_square 
+    bl draw_square
 
+    /* adjust x,y propellers */
+    mov x6, #10
+    mul x5, x5, x6
+    sub x3, x3, x5
+    udiv x5, x5, x6
+    mov x6, #3
+    mul x5, x5, x6
+    add x4, x4, x5
+    udiv x5, x5, x6
+
+    // Position in the middle of the propeller
+    mov x6, #3
+    mul x5, x5, x6
+    add x3, x3, x5
+    udiv x5, x5, x6
+
+    cbz x27, propeller_frame_1
+    cbnz x27, propeller_frame_2
+
+endif_propeller_frame_1:
+    /* restore registers */
+
+    ldr x25, [sp, #48]
     ldr x6, [sp, #40]
     ldr x3, [sp, #32]
     ldr x4, [sp, #24]
     ldr x5, [sp, #16]
     ldr x24, [sp, #8]
     ldr x30, [sp]
-    add sp, sp, #48
+    add sp, sp, #56
     br x30 
 
 /*
@@ -1385,13 +1410,15 @@ propeller_frame_1:
     str x4, [sp, #16]
     str x24, [sp, #8]
     str x30, [sp, #0]
-    
-    /* draw propeller */ 
-    
-    sub x3, x3, #41
-    sub x4, x4, #43 
-    ldr w24, gray5_color 
-    mov x5, #2
+
+    mov x6, #3
+    mul x5, x5, x6
+    sub x3, x3, x5
+    udiv x5, x5, x6
+
+    /* draw propeller */
+    ldr w24, gray5_color
+    //mov x5, #4
     bl draw_square 
 
     add x3, x3, x5
@@ -1454,7 +1481,9 @@ propeller_frame_1:
     ldr x24, [sp, #8]
     ldr x30, [sp, #0]
     add sp, sp, #32
-    br x30
+    //br x30
+    mov x27, #1
+    b endif_propeller_frame_1
 
 propeller_frame_2:
      /* save registers */
@@ -1463,11 +1492,9 @@ propeller_frame_2:
     str x4, [sp, #16]
     str x24, [sp, #8]
     str x30, [sp, #0]
-    
-    sub x3, x3, #29
-    sub x4, x4, #43 
-    ldr w24, gray5_color 
-    mov x5, #2
+
+    ldr w24, red0_color
+    //mov x5, #2
     bl draw_square 
 
     mov x6, #14
@@ -1481,6 +1508,8 @@ propeller_frame_2:
     ldr x24, [sp, #8]
     ldr x30, [sp, #0]
     add sp, sp, #32
-    br x30
+    //br x30
+    mov x27, #0
+    b endif_propeller_frame_1
 
 .endif
