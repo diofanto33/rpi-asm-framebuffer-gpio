@@ -48,61 +48,31 @@ gpio_func:
     // si w11 es 0 entonces el GPIO 1 estaba liberado
     // de lo contrario será distinto de 0, (en este caso particular 2)
     // significando que el GPIO 1 fue presionado
-    
-    cmp w11, key_W			
-    b.eq mov_up
-end_mov_up:
-
-    cmp w12, key_A			
-    b.eq mov_lft
-end_mov_lft:
-
-    cmp w13, key_S			
-    b.eq mov_down
-end_mov_down:
-
-    cmp w14, key_D			
-    b.eq mov_rgt
-end_mov_rgt:
 
     cmp w15, key_SPACE
     b.eq mov_z
-end_mov_z:
+    ret
 
+mov_z:
+    ldr w25, red0_color
+    cmp w24, w25
+    b.eq draw_sea_s
+    b draw_lava
+draw_sea_s:
+    ldr w25, bluecolorbg1
+    ldr w24, blue_color
+    b end_mov_z
+draw_lava:
+    ldr w25, sand1_color
+    ldr w24, red0_color
+    b end_mov_z
+end_mov_z:
     ldr x15, [sp, #32]
     ldr x14, [sp, #24]
     ldr x13, [sp, #16]
     ldr x12, [sp, #8]
     ldr x11, [sp]
     add sp, sp, #40
-
-    ret 
-
-mov_up:
-    sub x4, x4, #3
-    b end_mov_up
-
-mov_lft:
-    sub x3, x3, #3
-    b end_mov_lft
-
-mov_down:
-    add x4, x4, #3
-    b end_mov_down
-
-mov_rgt:
-    add x3, x3, #3
-    b end_mov_rgt
-
-mov_z:
-    cmp x5, #5
-    b.eq sub_z
-    b add_z
-add_z:
-    mov x5, #5
-    b end_mov_z
-sub_z:
-    mov x5, #3
-    b end_mov_z
+    ret
 
 .endif

@@ -1482,7 +1482,7 @@ propeller_frame_1:
     ldr x30, [sp, #0]
     add sp, sp, #32
     //br x30
-    mov x27, #1
+    //mov x27, #1
     b endif_propeller_frame_1
 
 propeller_frame_2:

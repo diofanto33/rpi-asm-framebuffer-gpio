@@ -55,18 +55,21 @@ main:
 	str x0, [x1]
     
     /* direciona el avion */ 
-    mov x3, #100
-    mov x4, #100
+    mov x3, #300
+    mov x4, #200
     mov x5, #3 // Z index del avion
     mov x27, #0 // frame del avion
     mov x28, #0 // Offset fondo
+    ldr w25, sand1_color
+    ldr w24, red0_color
 
     bl init_loop
 
 init_loop:
+
     bl draw_bg
+
     bl draw_sea
-    bl draw_grass
 
     bl airplane
 
@@ -75,10 +78,10 @@ init_loop:
     bl actualizarFrameBuffer 
     bl doDelay
 
-    add x28, x28, #1
-    cmp x28, #480
-    b.lt init_loop
-    mov x28, #0
+    //add x28, x28, #1
+    //cmp x28, #480
+    //b.lt init_loop
+    //mov x28, #0
     b init_loop
 
 
