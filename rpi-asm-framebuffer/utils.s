@@ -206,7 +206,7 @@ loop_doDelay:
 /* pintarCirculo
     Parámetros:
         x0 = Dirección base del arreglo
-        w24 = Color
+        w18 = Color
         x3 = Coordenada del centro en x
         x4 = Coordenada del centro en y
         x9 = Radio
@@ -253,8 +253,10 @@ pintarCirculo:
 
 // loop para avanzar en x
 loop0_pintarCirculo:
+    bl map
     cmp x3, x8
     b.gt end_loop0_pintarCirculo
+
     sub x4, x21, x5
 
     // Pongo en x4 la posición inicial en y
@@ -289,10 +291,12 @@ loop1_pintarCirculo:
 
 fi_pintarCirculo:
     add x4, x4, #1
+    bl map
     b loop1_pintarCirculo
 
 end_loop1_pintarCirculo:
     add x3, x3, #1
+    bl map
     b loop0_pintarCirculo
 
 end_loop0_pintarCirculo:

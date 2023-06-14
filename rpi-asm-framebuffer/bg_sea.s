@@ -29,8 +29,6 @@ draw_chunk_bg:
 	str x4, [sp, #16]
 	str x3, [sp, #8]
 	str x30, [sp]
-
-	ldr w24, bluecolorbg1
 	
 	add x3, x3, #18
 	bl map
@@ -729,11 +727,12 @@ draw_chunk_bg:
 */
 
 draw_bg:
-    sub sp, sp, #32
+    sub sp, sp, #40
+    str x18, [sp, #32]
     str x5, [sp, #24]
     str x4, [sp, #16]
     str x3, [sp, #8]
-    str x30, [sp]
+    str lr, [sp]
 
     ldr w24, bluecolorbg2
 	ldr x0, =bufferSecundario
@@ -764,28 +763,18 @@ draw_bg:
     ldr w24, grass_color
     mov x3, #550
     mov x4, #0
-    add x4, x4, x28
     mov x8, #640
     mov x9, #480
     bl map
     bl draw_rectangle
 
-    /*
-    mov x3, #550
-    mov x4, #60
-    add x4, x4, x28
-    mov x5, #45
-    ldr w18, grass_color
-    bl map
-    bl pintarCirculo
-*/
-
+    ldr x18, [sp, #32]
     ldr x5, [sp, #24]
     ldr x4, [sp, #16]
     ldr x3, [sp, #8]
-    ldr x30, [sp]
-    add sp, sp, #32
-    br x30 
+    ldr lr, [sp]
+    add sp, sp, #40
+    br lr
 
 /*
 	@brief: draw the pattern of the sea in the framebuffer
@@ -815,6 +804,7 @@ draw_sea:
 sea_loop1:
 	mov x2, #15
 sea_loop2:
+    ldr w24, bluecolorbg1
 	bl draw_chunk_bg
 	add x3, x3, #30
 	sub x2, x2, #1 
@@ -823,6 +813,35 @@ sea_loop2:
 	add x4, x4, #32
 	sub x1, x1, #1 
 	cbnz x1, sea_loop1
+
+    ldr x4, [sp, #16]
+    ldr x3, [sp, #8]
+	ldr x30, [sp]
+	add sp, sp, #24
+	br x30
+
+draw_grass:
+	sub sp, sp, #24
+    str x4, [sp, #16]
+    str x3, [sp, #8]
+	str x30, [sp]
+
+	mov x3, #485
+	mov x4, x28
+	mov x1, #15 // en 14 funciona bien
+
+grass_loop1:
+	mov x2, #2
+grass_loop2:
+    ldr w24, sand0_color
+	bl draw_chunk_bg
+	add x3, x3, #30
+	sub x2, x2, #1
+	cbnz x2, grass_loop2
+	mov x3, #485
+	add x4, x4, #32
+	sub x1, x1, #1
+	cbnz x1, grass_loop1
 
     ldr x4, [sp, #16]
     ldr x3, [sp, #8]

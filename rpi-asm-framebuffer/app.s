@@ -21,6 +21,12 @@
 screen_pixels_div_2_menos_1: .dword SCREEN_PIXELS_div_2_menos_1 
 // Último indice tomando los elementos como dword
 actualizarFrameBuffer:
+    sub sp, sp, #40
+    str x23, [sp, #32]
+    str x21, [sp, #24]
+    str x1, [sp, #16]
+    str x0, [sp, #8]
+    str lr, [sp]
 
     ldr x0, =bufferSecundario        
     ldr x1, dir_frameBuffer
@@ -33,6 +39,13 @@ loop_actualizarFrameBuffer:
     sub x21, x21, #1
     b loop_actualizarFrameBuffer
 end_loop_actualizarFrameBuffer:
+
+    ldr x23, [sp, #32]
+    ldr x21, [sp, #24]
+    ldr x1, [sp, #16]
+    ldr x0, [sp, #8]
+    ldr lr, [sp]
+    add sp, sp, #40
     br lr
 
 main:
@@ -53,13 +66,12 @@ main:
 init_loop:
     bl draw_bg
     bl draw_sea
-
-    //bl draw_beach
+    bl draw_grass
 
     bl airplane
 
     bl gpio_func
-    
+
     bl actualizarFrameBuffer 
     bl doDelay
 
