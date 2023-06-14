@@ -55,11 +55,6 @@ main:
 	str x0, [x1]
     
     /* direciona el avion */ 
-    mov x3, #300
-    mov x4, #200
-    mov x5, #3 // Z index del avion
-    mov x27, #0 // frame del avion
-    mov x28, #0 // Offset fondo
     ldr w25, sand1_color
     ldr w24, red0_color
 
@@ -70,6 +65,18 @@ init_loop:
     bl draw_bg
 
     bl draw_sea
+    
+    mov x3, #570  
+    mov x4, #60
+    mov x5, #30  
+    ldr w18, yellow_sun_color
+    bl pintarCirculo
+    
+    mov x3, #300
+    mov x4, #280
+    mov x5, #8 // Z index del avion
+    mov x27, #0 // frame del avion
+    mov x28, #0 // Offset fondo
 
     bl airplane
 
