@@ -729,29 +729,62 @@ draw_chunk_bg:
 */
 
 draw_bg:
-    sub sp, sp, #24 
+    sub sp, sp, #32
+    str x5, [sp, #24]
     str x4, [sp, #16]
     str x3, [sp, #8]
     str x30, [sp]
 
     ldr w24, bluecolorbg2
 	ldr x0, =bufferSecundario
-//	mov x0, x20
-	mov x2, SCREEN_HEIGH    // Y Size
-draw_bg_loop1:
-	mov x1, SCREEN_WIDTH    // X Size
-draw_bg_loop0:
-	stur w24, [x0]  			// Colorear el pixel N
-	add x0, x0, #4    			// Siguiente pixel
-	sub x1, x1, #1    			// Decrementar contador X
-	cbnz x1, draw_bg_loop0  // Si no terminó la fila, salto
-	sub x2, x2, #1    			// Decrementar contador Y
-	cbnz x2, draw_bg_loop1  // Si no es la última fila, salto	
-	
+
+	mov x3, #0
+	mov x4, #0
+	mov x8, #640
+	mov x9, #480
+	bl map
+	bl draw_rectangle
+
+    ldr w24, sand1_color
+    mov x3, #460
+    mov x4, #0
+    mov x8, #640
+    mov x9, #480
+    bl map
+    bl draw_rectangle
+
+    ldr w24, sand0_color
+    mov x3, #490
+    mov x4, #0
+    mov x8, #640
+    mov x9, #480
+    bl map
+    bl draw_rectangle
+
+    ldr w24, grass_color
+    mov x3, #550
+    mov x4, #0
+    add x4, x4, x28
+    mov x8, #640
+    mov x9, #480
+    bl map
+    bl draw_rectangle
+
+    /*
+    mov x3, #550
+    mov x4, #60
+    add x4, x4, x28
+    mov x5, #45
+    ldr w18, grass_color
+    bl map
+    bl pintarCirculo
+*/
+
+    ldr x5, [sp, #24]
     ldr x4, [sp, #16]
     ldr x3, [sp, #8]
     ldr x30, [sp]
-    add sp, sp, #24 
+    add sp, sp, #32
     br x30 
 
 /*
@@ -780,10 +813,10 @@ draw_sea:
 	mov x1, #15 // en 14 funciona bien
 
 sea_loop1:
-	mov x2, #25
+	mov x2, #15
 sea_loop2:
 	bl draw_chunk_bg
-	add x3, x3, #25
+	add x3, x3, #30
 	sub x2, x2, #1 
 	cbnz x2, sea_loop2
 	mov x3, #0
@@ -798,3 +831,4 @@ sea_loop2:
 	br x30
 
 .endif
+

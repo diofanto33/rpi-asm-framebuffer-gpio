@@ -58,15 +58,15 @@ init_loop:
 
     bl airplane
 
-
-
-
     bl gpio_func
     
     bl actualizarFrameBuffer 
     bl doDelay
 
     add x28, x28, #1
+    cmp x28, #480
+    b.lt init_loop
+    mov x28, #0
     b init_loop
 
 

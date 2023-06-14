@@ -5,8 +5,6 @@
 
 bufferSecundario: .skip BYTES_FRAMEBUFFER
 
-
-
 .equ key_W, 0x2
 .equ key_A, 0x4
 .equ key_S, 0x8
@@ -23,6 +21,9 @@ bluecolorbg1: .word 0x4965F0
 bluecolorbg2: .word 0x001B9F
 
 green_color1: .word 0x00B70C
+sand0_color: .word 0x695d4e
+sand1_color: .word 0x433e38
+grass_color: .word 0x32391b
 
 /* airplane colors */
 red0_color: .word 0xFF0000
