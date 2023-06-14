@@ -43,6 +43,7 @@ gray4_color: .word 0x181818
 gray5_color: .word 0x303030
 gray6_color: .word 0xF8F8F8
 
+yellow_sun_color: .word 0xFFFF00
 
 // Variable para guardar la dirección de memoria del comienzo del frame buffer
 dir_frameBuffer: .dword 0
